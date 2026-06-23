@@ -1,123 +1,90 @@
 ---
 layout: default
+title: Nova | Cybersecurity Portfolio
 ---
 
-Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
+<div style="text-align: center; margin-bottom: 3rem;">
+  <h1>Nova</h1>
+  <p><strong>Aspiring SOC Analyst & Incident Responder</strong></p>
+  <p>Building defensive security skills through hands-on labs, home infrastructure, and continuous learning.</p>
+  
+  <a href="#projects" class="btn">View Projects</a>
+  <a href="#skills" class="btn">Skills & Tools</a>
+</div>
 
-[Link to another page](./another-page.html).
+## About Me
 
-There should be whitespace between paragraphs.
+I'm an 18-year-old cybersecurity enthusiast from Fort Wayne, Indiana, focused on **blue team** operations. My goal is to join a Security Operations Center (SOC) and eventually move into **Incident Response**.
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+I’m currently building practical experience through:
+- Self-hosted security infrastructure (Home SIEM on Proxmox)
+- CTFs, labs, and detection engineering
+- Documenting everything I learn
 
-# Header 1
+---
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+## Skills & Tools
 
-## Header 2
+**Monitoring & Detection**
+- SIEM (Wazuh, Elastic)
+- Log analysis & correlation
+- IDS/IPS (Suricata)
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+**Incident Response**
+- Forensic fundamentals
+- Containment & eradication processes
+- MITRE ATT&CK mapping
 
-### Header 3
+**Infrastructure**
+- Proxmox VE
+- Linux server administration
+- Docker & container security
 
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
+**Programming & Scripting**
+- Python (automation, parsing logs)
+- Bash/PowerShell
 
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
+**Other**
+- OSINT, Threat Intelligence
+- Network traffic analysis (Wireshark)
 
-#### Header 4
+---
 
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
+## Projects
 
-##### Header 5
+### Home SIEM Lab (In Progress)
+Building a production-like Security Information and Event Management system on Proxmox to simulate enterprise monitoring.
 
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
+**Components:**
+- Wazuh (or Elastic Stack)
+- Multiple virtual agents (Windows, Linux, vulnerable services)
+- Centralized logging
+- Dashboarding & alerting
 
-###### Header 6
+**Goals:** Practice detection engineering, alert triage, and incident simulation — exactly what a SOC analyst does daily.
 
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
+[View Documentation →](/projects/homesiem) *(coming soon)*
 
-### There's a horizontal rule below this.
+### More projects will be added as I complete them (TryHackMe, HackTheBox, CTFs, malware analysis, etc.)
 
-* * *
+---
 
-### Here is an unordered list:
+## Learning Path & Goals
 
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
+- **Short term:** Land first SOC / Security Analyst role
+- **Medium term:** Get Security+ and Splunk/Elastic certifications
+- **Long term:** Join a dedicated Incident Response team
 
-### And an ordered list:
+I document my journey here so recruiters and other learners can follow along.
 
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
+---
 
-### And a nested list:
+## Get in Touch
 
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
+- GitHub: [@yourusername](https://github.com/yourusername)
+- LinkedIn: (add link)
+- Email: (add email)
 
-### Small image
+---
 
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```
+*Last updated: June 2026*
