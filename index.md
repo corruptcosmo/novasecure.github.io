@@ -4,7 +4,7 @@ title: Welcome to my Page | Cybersecurity Portfolio
 ---
 
 <div style="text-align: center; margin-bottom: 3rem;">
-  <h1>Nova</h1>
+  <h1>Welcome to my Page</h1>
   <p><strong>Aspiring SOC Analyst & Incident Responder</strong></p>
   <p>Building defensive security skills through hands-on labs, home infrastructure, and continuous learning.</p>
   
