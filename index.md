@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Nova | Cybersecurity Portfolio
+title: Welcome to my Page | Cybersecurity Portfolio
 ---
 
 <div style="text-align: center; margin-bottom: 3rem;">
@@ -81,9 +81,9 @@ I document my journey here so recruiters and other learners can follow along.
 
 ## Get in Touch
 
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [@corruptcosmo](https://github.com/corruptcosmo)
 - LinkedIn: (add link)
-- Email: (add email)
+- Email: (haydenochoa15@gmail.com)
 
 ---
 
