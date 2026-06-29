@@ -63,7 +63,7 @@ Building a production-like Security Information and Event Management system on P
 
 **Goals:** Practice detection engineering, alert triage, and incident simulation — exactly what a SOC analyst does daily.
 
-[View Documentation →](/projects/homesiem) *(coming soon)*
+[View Documentation →](/projects/homesiem/)
 
 ### More projects will be added as I complete them (TryHackMe, HackTheBox, CTFs, malware analysis, etc.)
 
