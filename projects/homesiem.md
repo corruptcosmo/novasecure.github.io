@@ -97,10 +97,20 @@ The lab runs on Proxmox with two networks:
 
 ## Screenshots
 
-*(Add your screenshots here)*
+### Wazuh Dashboard
 
-- Wazuh Dashboard
-- Agents overview
-- Example FIM alerts
-- pfSense configuration
-- Network diagram
+![Wazuh Dashboard Overview](/novasecure.github.io/images/Wazuh-dashboard.png)
+
+### Wazuh Agents
+
+![Wazuh Agents Overview](/novasecure.github.io/images/Wazuh-agents.png)
+
+### Threat Hunting & Alerts
+
+![Wazuh Threat Hunting](/novasecure.github.io/images/Wazuh-threat.png)
+
+### pfSense Configuration
+
+![pfSense LAN Interface](/novasecure.github.io/images/pfsense.png)
+
+![pfSense Firewall Rules](/novasecure.github.io/images/pfsense1.png)
