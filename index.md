@@ -82,7 +82,7 @@ I document my journey here so recruiters and other learners can follow along.
 ## Get in Touch
 
 - GitHub: [@corruptcosmo](https://github.com/corruptcosmo)
-- LinkedIn: (add link)
+- LinkedIn: [Hayden Ochoa](https://www.linkedin.com/in/hayden-ochoa-b09a0b412/)
 - Email: (haydenochoa15@gmail.com)
 
 ---
