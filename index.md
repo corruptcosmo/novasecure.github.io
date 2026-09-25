@@ -1,90 +1,82 @@
 ---
 layout: default
-title: Welcome to my Page | Cybersecurity Portfolio
+title: Hayden Ochoa | Cybersecurity Portfolio
 ---
 
-<div style="text-align: center; margin-bottom: 3rem;">
-  <h1>Welcome to my Page</h1>
-  <p><strong>Aspiring SOC Analyst & Incident Responder</strong></p>
-  <p>Building defensive security skills through hands-on labs, home infrastructure, and continuous learning.</p>
-  
-  <a href="#projects" class="btn">View Projects</a>
-  <a href="#skills" class="btn">Skills & Tools</a>
-</div>
+<section class="hero">
+  <div class="eyebrow">BLUE TEAM • SECURITY ENGINEERING • HOMELAB</div>
+  <h1>Hayden Ochoa</h1>
+  <p class="hero-role">Aspiring SOC Analyst & Incident Responder</p>
+  <p class="hero-copy">I build defensive-security labs, self-hosted infrastructure, and practical tooling to turn hands-on work into verifiable cybersecurity experience.</p>
+  <div class="hero-actions">
+    <a href="#projects" class="btn btn-primary">View Projects</a>
+    <a href="#skills" class="btn btn-secondary">Skills & Tools</a>
+  </div>
+</section>
 
-## About Me
+<section class="panel">
+  <div class="section-kicker">ABOUT</div>
+  <h2>Building evidence, not just checking boxes.</h2>
+  <p>I'm an 18-year-old cybersecurity candidate from Fort Wayne, Indiana, focused on blue-team operations, incident response, and practical security engineering. I learn by building: Proxmox labs, Linux services, SIEM pipelines, detection workflows, and automation that I can explain, troubleshoot, and improve.</p>
+</section>
 
-I'm an 18-year-old cybersecurity enthusiast from Fort Wayne, Indiana, focused on **blue team** operations. My goal is to join a Security Operations Center (SOC) and eventually move into **Incident Response**.
+<section id="projects">
+  <div class="section-kicker">FEATURED WORK</div>
+  <h2>Projects</h2>
 
-I’m currently building practical experience through:
-- Self-hosted security infrastructure (Home SIEM on Proxmox)
-- CTFs, labs, and detection engineering
-- Documenting everything I learn
+  <div class="project-grid">
+    <article class="project-card flagship">
+      <div class="project-meta">
+        <span class="status">V0.1 • IN DEVELOPMENT</span>
+        <span class="tag">FLAGSHIP</span>
+      </div>
+      <h3>Cyber Career OS</h3>
+      <p>A local-first, AI-assisted cybersecurity career and training platform designed to connect job-market skill gaps with hands-on labs, SIEM investigations, verified portfolio evidence, and safer career automation.</p>
+      <div class="stack-list">FastAPI • PostgreSQL • Next.js • Ollama-ready • Proxmox-ready • SIEM-ready</div>
+      <a class="text-link" href="{{ '/projects/cyber-career-os/' | relative_url }}">View project foundation →</a>
+    </article>
 
----
+    <article class="project-card">
+      <div class="project-meta">
+        <span class="status">IN PROGRESS</span>
+      </div>
+      <h3>Home SIEM Lab</h3>
+      <p>A production-style monitoring lab running on Proxmox to practice centralized logging, alert triage, detection engineering, and incident simulation.</p>
+      <div class="stack-list">Wazuh / Elastic • Windows • Linux • Proxmox</div>
+      <a class="text-link" href="{{ '/projects/homesiem/' | relative_url }}">View documentation →</a>
+    </article>
+  </div>
+</section>
 
-## Skills & Tools
+<section id="skills" class="panel">
+  <div class="section-kicker">CAPABILITIES</div>
+  <h2>Skills & Tools</h2>
+  <div class="skills-grid">
+    <div><h3>Monitoring & Detection</h3><p>Wazuh, Elastic, log analysis, correlation, Suricata, Wireshark.</p></div>
+    <div><h3>Incident Response</h3><p>Alert triage, containment concepts, forensic fundamentals, MITRE ATT&CK mapping.</p></div>
+    <div><h3>Infrastructure</h3><p>Proxmox VE, Linux administration, Docker, virtualization, self-hosting.</p></div>
+    <div><h3>Scripting</h3><p>Python automation, Bash, PowerShell, parsing and workflow tooling.</p></div>
+  </div>
+</section>
 
-**Monitoring & Detection**
-- SIEM (Wazuh, Elastic)
-- Log analysis & correlation
-- IDS/IPS (Suricata)
+<section class="panel">
+  <div class="section-kicker">DIRECTION</div>
+  <h2>Current path</h2>
+  <div class="timeline">
+    <div><strong>Now</strong><span>Build production-style labs and ship Cyber Career OS V0.1.</span></div>
+    <div><strong>Next</strong><span>Land an entry-level SOC, security analyst, NOC, or infrastructure role.</span></div>
+    <div><strong>Long term</strong><span>Grow into incident response, detection engineering, and defensive security engineering.</span></div>
+  </div>
+</section>
 
-**Incident Response**
-- Forensic fundamentals
-- Containment & eradication processes
-- MITRE ATT&CK mapping
-
-**Infrastructure**
-- Proxmox VE
-- Linux server administration
-- Docker & container security
-
-**Programming & Scripting**
-- Python (automation, parsing logs)
-- Bash/PowerShell
-
-**Other**
-- OSINT, Threat Intelligence
-- Network traffic analysis (Wireshark)
-
----
-
-## Projects
-
-### Home SIEM Lab (In Progress)
-Building a production-like Security Information and Event Management system on Proxmox to simulate enterprise monitoring.
-
-**Components:**
-- Wazuh (or Elastic Stack)
-- Multiple virtual agents (Windows, Linux, vulnerable services)
-- Centralized logging
-- Dashboarding & alerting
-
-**Goals:** Practice detection engineering, alert triage, and incident simulation — exactly what a SOC analyst does daily.
-
-[View Documentation →](/novasecure.github.io/projects/homesiem/)
-
-### More projects will be added as I complete them (TryHackMe, HackTheBox, CTFs, malware analysis, etc.)
-
----
-
-## Learning Path & Goals
-
-- **Short term:** Land first SOC / Security Analyst role
-- **Medium term:** Get Security+ and Splunk/Elastic certifications
-- **Long term:** Join a dedicated Incident Response team
-
-I document my journey here so recruiters and other learners can follow along.
-
----
-
-## Get in Touch
-
-- GitHub: [@corruptcosmo](https://github.com/corruptcosmo)
-- LinkedIn: [Hayden Ochoa](https://www.linkedin.com/in/hayden-ochoa-b09a0b412/)
-- Email: (haydenochoa15@gmail.com)
-
----
-
-*Last updated: June 2026*
+<section class="contact">
+  <div class="section-kicker">CONTACT</div>
+  <h2>Let's connect.</h2>
+  <p>
+    <a href="https://github.com/corruptcosmo">GitHub</a>
+    <span>•</span>
+    <a href="https://www.linkedin.com/in/hayden-ochoa-b09a0b412/">LinkedIn</a>
+    <span>•</span>
+    <a href="mailto:haydenochoa15@gmail.com">Email</a>
+  </p>
+</section>
