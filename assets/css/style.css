@@ -163,3 +163,23 @@ main hr { border: 0; border-top: 1px solid var(--line); margin: 44px 0; }
   .timeline div { grid-template-columns: 1fr; gap: 4px; }
   .footer-inner { flex-direction: column; }
 }
+
+.project-graphic {
+  margin: 1.5rem 0 2rem;
+}
+
+.project-graphic img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.28);
+}
+
+.project-graphic figcaption {
+  margin-top: 0.85rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
