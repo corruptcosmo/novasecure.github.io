@@ -6,7 +6,8 @@ permalink: /projects/cyber-career-os/
 
 # Cyber Career OS
 
-**Status:** `V0.1 • Foundation in Development`
+**Status:** `V0.1.0 • Foundation Complete`  
+**Current focus:** `V0.2 • Identity & Policy Enforcement`
 
 **Cyber Career OS** is a local-first, AI-assisted cybersecurity career and training platform I am designing and building to solve a problem I am facing directly as an entry-level cybersecurity candidate: how to close the gap between learning security skills and proving those skills in a way that helps lead to real career opportunities.
 
@@ -16,6 +17,61 @@ It is being designed from the beginning as both a **real personal tool** and a *
   <img src="/novasecure.github.io/images/cyber-career-os-flow.svg" alt="Cyber Career OS workflow diagram" />
   <figcaption>The core loop: learn skills, prove them with evidence, apply them to career opportunities, and improve by turning gaps into new labs.</figcaption>
 </figure>
+
+## V0.1.0 — Foundation
+
+The first implementation milestone is complete.
+
+### Implemented
+
+- FastAPI backend with versioned CRUD endpoints and OpenAPI documentation
+- PostgreSQL persistence using SQLAlchemy
+- Alembic migration framework
+- owner-aware users, profiles, skills, evidence, jobs, job requirements, job matches, applications, approvals, and audit records
+- explicit data-classification and action-risk types
+- model, hypervisor, SIEM, and agent interfaces
+- deterministic mock model provider with secret-data rejection
+- Next.js status frontend
+- Docker Compose PostgreSQL service
+- architecture documentation, ADRs, threat modeling, roadmap, changelog, and development logs
+
+### Verification
+
+The V0.1.0 foundation passed:
+
+- backend tests — **3 passed**
+- Ruff formatting and linting — **passed**
+- Alembic PostgreSQL migration generation — **passed**
+- Next.js production build — **passed**
+- npm security audit — **0 vulnerabilities reported**
+
+---
+
+## Security Architecture
+
+The current architecture intentionally separates AI agents from privileged services.
+
+Agents participate in workflows through explicit interfaces and should not directly receive:
+
+- database sessions
+- unrestricted shell access
+- hypervisor credentials
+- SIEM credentials
+
+The foundation also models reusable approvals, audit records, privacy classifications, and provider boundaries before introducing live AI or infrastructure control.
+
+The project threat model explicitly records remaining gaps rather than treating architectural intent as already-enforced security.
+
+Current next-step security work includes:
+
+- authentication and object authorization
+- centralized ownership enforcement
+- one-time, action-bound approval execution
+- stronger append-only audit handling
+- centralized privacy/model-routing policy
+- provider endpoint and target validation
+
+---
 
 ## Project Goal
 
@@ -45,42 +101,42 @@ Cyber Career OS is my attempt to create a single system that ties all of those p
 
 ---
 
-## Current Scope — V0.1
+## Current Architecture Direction
 
-Version 0.1 is focused on building the **foundation** correctly rather than trying to over-automate too early.
+The implemented monorepo uses:
 
-### V0.1 priorities
+- **Backend:** Python / FastAPI
+- **Database:** PostgreSQL / SQLAlchemy / Alembic
+- **Frontend:** Next.js
+- **Development database:** Docker Compose
 
-- architecture and security boundaries;
-- user/profile and verified-skill evidence models;
-- jobs, requirements, matches, and application tracking;
-- provider abstractions for AI, hypervisors, and SIEMs;
-- approval workflows for higher-risk actions;
-- audit logging and documentation;
-- a long-term structure that can grow without major rewrites.
+The codebase uses provider contracts so domain logic does not have to depend directly on a specific AI platform, hypervisor, or SIEM.
 
-### Core design principles
+Planned provider directions include:
 
-- **Local-first** where possible
-- **Privacy-conscious** handling of sensitive data
-- **Least privilege** for infrastructure access
-- **Human approval** for consequential actions
-- **Evidence-backed claims** in resumes and application materials
-- **Provider-agnostic architecture** for AI, hypervisors, and SIEMs
+- **Local AI:** Ollama
+- **Cyber range:** Proxmox
+- **Security telemetry:** Wazuh initially
+
+Live providers remain intentionally deferred until stronger policy enforcement is in place.
 
 ---
 
-## Planned System Concept
+## Next Milestone — V0.2
 
-In later versions, the platform is intended to connect:
+V0.2 will focus on turning the security model established in V0.1 into centrally enforced policy.
 
-- **Career systems** — jobs, resumes, cover letters, application tracking, interviews
-- **Training systems** — mentor guidance, skills, competency tracking, labs, assessments
-- **Cyber range systems** — Proxmox-based isolated training labs and scenario environments
-- **Security operations systems** — SIEM investigations, alerts, cases, evidence, timelines, reporting
-- **Purple Team workflows** — attack reconstruction, missed detection review, detection engineering, tuning
+Planned work includes:
 
-That means the same platform helping me find jobs can also help me build the skills and evidence needed to become a better candidate for those jobs.
+- authentication
+- authorization
+- centralized ownership enforcement
+- approval lifecycle and replay protection
+- append-only audit services
+- privacy-routing policy
+- sensitive-data redaction and policy tests
+
+Ollama, Proxmox, SIEM integration, offensive scenarios, and automated application submission are intentionally not part of this milestone.
 
 ---
 
@@ -129,37 +185,6 @@ A simplified self-hosted environment, likely built on top of Linux, with:
 
 ---
 
-## Technologies and Architecture Direction
-
-The current design direction includes:
-
-- **Backend:** Python, FastAPI
-- **Database:** PostgreSQL
-- **Frontend:** Next.js / React / TypeScript
-- **Local AI:** Ollama
-- **Infrastructure:** Proxmox for isolated labs
-- **Security telemetry:** Wazuh initially, with room for other SIEM providers later
-
-A major architectural goal is to avoid hard-coding the platform around only one AI provider or one infrastructure provider.
-
----
-
-## Security Philosophy
-
-Because this platform is intended to interact with job data, personal information, and eventually cyber-range infrastructure, security architecture is part of the project from the beginning.
-
-Important principles include:
-
-- AI systems should not receive unrestricted infrastructure access.
-- High-impact actions should support approval workflows.
-- Training infrastructure should stay isolated from production/home services.
-- Sensitive information should be classified and handled appropriately.
-- Automation should be auditable.
-
-This is important both for the platform itself and because the project is meant to reflect how I think about security engineering.
-
----
-
 ## Why This Matters as a Portfolio Project
 
 Cyber Career OS is not just a concept I want to talk about later. I want the project history itself to become evidence.
@@ -172,22 +197,4 @@ That includes:
 - building incrementally instead of pretending everything exists already;
 - showing how the platform grows from V0.1 into something much larger.
 
-This makes the project useful in two ways:
-
-1. it may eventually help me directly manage my learning and job search;
-2. it already demonstrates systems thinking, security design, and long-term project planning.
-
----
-
-## Current Status
-
-Cyber Career OS is currently in the **V0.1 planning and foundation stage**.
-
-The first public milestones are:
-
-- establish the architecture;
-- define the constitution and design principles;
-- create the repository foundation;
-- begin implementation with maintainability and security in mind.
-
-Project updates, milestones, and documentation will be added as development continues.
+V0.1.0 now provides a concrete first checkpoint: working application infrastructure, tests, data models, provider boundaries, and documented security decisions rather than only a roadmap.
