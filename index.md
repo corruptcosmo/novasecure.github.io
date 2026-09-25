@@ -27,13 +27,13 @@ title: Hayden Ochoa | Cybersecurity Portfolio
   <div class="project-grid">
     <article class="project-card flagship">
       <div class="project-meta">
-        <span class="status">V0.1 • IN DEVELOPMENT</span>
+        <span class="status">V0.1.0 • FOUNDATION COMPLETE</span>
         <span class="tag">FLAGSHIP</span>
       </div>
       <h3>Cyber Career OS</h3>
-      <p>A local-first, AI-assisted cybersecurity career and training platform designed to connect job-market skill gaps with hands-on labs, SIEM investigations, verified portfolio evidence, and safer career automation.</p>
-      <div class="stack-list">FastAPI • PostgreSQL • Next.js • Ollama-ready • Proxmox-ready • SIEM-ready</div>
-      <a class="text-link" href="{{ '/projects/cyber-career-os/' | relative_url }}">View project foundation →</a>
+      <p>A local-first, AI-assisted cybersecurity career and training platform. V0.1.0 now includes a working FastAPI/PostgreSQL foundation, owner-aware domain models, approval and audit primitives, provider contracts, a Next.js status UI, automated tests, architecture documentation, and an initial threat model.</p>
+      <div class="stack-list">FastAPI • PostgreSQL • SQLAlchemy • Alembic • Next.js • Docker • Security Architecture</div>
+      <a class="text-link" href="{{ '/projects/cyber-career-os/' | relative_url }}">View V0.1.0 foundation →</a>
     </article>
 
     <article class="project-card">
@@ -63,7 +63,7 @@ title: Hayden Ochoa | Cybersecurity Portfolio
   <div class="section-kicker">DIRECTION</div>
   <h2>Current path</h2>
   <div class="timeline">
-    <div><strong>Now</strong><span>Build production-style labs and ship Cyber Career OS V0.1.</span></div>
+    <div><strong>Now</strong><span>Test Cyber Career OS V0.1.0 and begin V0.2 identity and policy enforcement.</span></div>
     <div><strong>Next</strong><span>Land an entry-level SOC, security analyst, NOC, or infrastructure role.</span></div>
     <div><strong>Long term</strong><span>Grow into incident response, detection engineering, and defensive security engineering.</span></div>
   </div>
