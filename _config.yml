@@ -1,5 +1,6 @@
-title: Hacker theme
-description: Hacker is a theme for GitHub Pages.
-show_downloads: true
+title: Hayden Ochoa | Cybersecurity Portfolio
+description: Blue team, security engineering, homelab infrastructure, and Cyber Career OS.
+show_downloads: false
 google_analytics:
-theme: jekyll-theme-hacker
+markdown: kramdown
+permalink: pretty

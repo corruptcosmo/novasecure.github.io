@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home SOC Lab | Nova
+title: Home SOC Lab | Hayden Ochoa
 permalink: /projects/homesiem/
 ---
 
@@ -38,79 +38,45 @@ The lab runs on Proxmox with two networks:
 ## What I Built
 
 ### Wazuh SIEM
-- Deployed Wazuh as an all-in-one instance
-- Configured the Indexer, Manager, and Dashboard
-- Deployed agents on both the Proxmox host and isolated lab machines
-- Enabled File Integrity Monitoring (FIM) for real-time file change detection
+
+I deployed a Wazuh all-in-one server inside a Proxmox LXC container. The server acts as the central monitoring platform for the lab.
+
+The environment is designed to collect logs from both management-side and isolated lab systems so I can practice alert triage and correlation from one place.
 
 ### Network Segmentation
-- Set up pfSense as a virtual firewall
-- Created an isolated lab network (`192.168.10.0/24`)
-- Configured routing so lab machines can reach the Wazuh server while remaining segmented
+
+I created an isolated virtual network using Proxmox and pfSense. This lets me separate testing systems from the rest of my home network while still controlling routing and visibility.
 
 ### Endpoint Monitoring
-- Installed and configured Wazuh agents across systems
-- Verified agents were reporting properly in the dashboard
-- Monitored system logs and file integrity events
 
-### Detection Testing
-- Used the EICAR test file and file modifications to generate alerts
-- Practiced investigating alerts in the Wazuh Dashboard
-- Gained experience with basic alert triage workflows
+Wazuh agents provide endpoint telemetry from monitored systems. I use the environment to practice investigating authentication activity, file changes, suspicious processes, and other host events.
 
-## Skills Gained
+### File Integrity Monitoring
 
-- SIEM deployment and management (Wazuh)
-- Log collection and analysis
-- File Integrity Monitoring (FIM)
-- Network segmentation and firewall configuration (pfSense)
-- Virtualization and lab infrastructure (Proxmox)
-- Detection engineering basics
-- Safe security testing environment design
+I enabled Wazuh File Integrity Monitoring to learn how endpoint changes are detected, recorded, and investigated.
 
-## Challenges & Solutions
+## Skills Demonstrated
 
-- **Networking issues** between the lab network and Wazuh server → Fixed by adding a management IP to the bridge and verifying routing through pfSense.
-- **Wazuh agent configuration errors** (`MANAGER_IP` placeholder) → Manually edited the agent config file and restarted the service.
-- **Dashboard access problems** → Cleared browser cache and accepted the self-signed certificate.
+- Proxmox VE administration
+- Linux server administration
+- Wazuh deployment and management
+- SIEM fundamentals
+- log collection and analysis
+- network segmentation
+- pfSense configuration
+- endpoint monitoring
+- File Integrity Monitoring
+- security lab isolation
+- technical documentation
 
-## Results
+## Next Steps
 
-- Successfully built a functional Wazuh SIEM with multiple healthy agents
-- Created a properly segmented lab network
-- Detected file creation and modification activity using FIM
-- Gained real experience investigating alerts in a live SIEM
+- Add additional Windows and Linux endpoints
+- Improve dashboarding and alert tuning
+- Build repeatable controlled detection scenarios
+- Practice incident timelines and case documentation
+- Connect the lab with future Cyber Career OS training workflows
 
-## Lessons Learned
+---
 
-- Proper network segmentation is critical when working with potentially malicious activity
-- Agent configuration and connectivity are foundational to good visibility
-- Starting with simple, known test cases (like EICAR) is the best way to learn detection
-
-## Future Improvements
-
-- Move the Wazuh server fully onto the isolated lab network
-- Add a Windows agent with Sysmon
-- Integrate network detection (Suricata)
-- Create custom detection rules
-- Run a full simulated incident response exercise
-
-## Screenshots
-
-### Wazuh Dashboard
-
-![Wazuh Dashboard Overview](/novasecure.github.io/images/Wazuh-dashboard.png)
-
-### Wazuh Agents
-
-![Wazuh Agents Overview](/novasecure.github.io/images/Wazuh-agents.png)
-
-### Threat Hunting & Alerts
-
-![Wazuh Threat Hunting](/novasecure.github.io/images/Wazuh-threat.png)
-
-### pfSense Configuration
-
-![pfSense LAN Interface](/novasecure.github.io/images/pfsense.png)
-
-![pfSense Firewall Rules](/novasecure.github.io/images/pfsense1.png)
+This lab is intentionally isolated for controlled defensive-security learning and testing.
