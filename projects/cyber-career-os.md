@@ -6,146 +6,188 @@ permalink: /projects/cyber-career-os/
 
 # Cyber Career OS
 
-**V0.1 — Foundation in Development**
+**Status:** `V0.1 • Foundation in Development`
 
-> Learn. Prove. Apply. Improve.
+**Cyber Career OS** is a local-first, AI-assisted cybersecurity career and training platform I am designing and building to solve a problem I am facing directly as an entry-level cybersecurity candidate: how to close the gap between learning security skills and proving those skills in a way that helps lead to real career opportunities.
 
-Cyber Career OS is a local-first, AI-assisted cybersecurity career and training platform I am designing and building to solve a problem I encountered while beginning my cybersecurity career: entry-level candidates are expected to show experience before they are given many opportunities to gain professional experience.
+It is being designed from the beginning as both a **real personal tool** and a **portfolio-grade engineering project**.
 
-The project is designed to connect career development directly with hands-on technical training and verifiable evidence.
+<figure class="project-graphic">
+  <img src="/novasecure.github.io/images/cyber-career-os-flow.svg" alt="Cyber Career OS workflow diagram" />
+  <figcaption>The core loop: learn skills, prove them with evidence, apply them to career opportunities, and improve by turning gaps into new labs.</figcaption>
+</figure>
 
----
+## Project Goal
 
-## The Problem
+Cyber Career OS connects four parts of the same problem:
 
-Job listings repeatedly ask for hands-on experience with technologies such as SIEM platforms, Active Directory, Windows logging, Linux administration, scripting, incident response, and infrastructure tooling.
+1. **Learn** — build hands-on skills through labs, mentoring, investigations, and controlled exercises.
+2. **Prove** — turn that work into verified evidence, documentation, project records, and portfolio material.
+3. **Apply** — use truthful, evidence-backed profile data to improve resumes, cover letters, and job targeting.
+4. **Improve** — identify recurring skill gaps from the job market and feed them back into future labs and projects.
 
-Cyber Career OS is intended to turn those recurring requirements into a continuous learning loop:
+The long-term idea is to build a system that helps answer:
 
-**Job market → skill-gap analysis → lab training → security investigation → assessment → verified evidence → stronger portfolio and applications**
-
----
-
-## Planned Core Capabilities
-
-- Discover and analyze entry-level cybersecurity and IT opportunities.
-- Compare job requirements against verified skills and experience.
-- Generate truthful job-specific resumes and application material.
-- Track applications, interviews, and career progress.
-- Identify recurring skill gaps across job listings.
-- Convert skill gaps into hands-on cybersecurity labs.
-- Provision isolated lab environments through controlled Proxmox integrations.
-- Integrate lab telemetry with a SIEM.
-- Provide progressively reduced AI mentorship as skills improve.
-- Run controlled attack simulations inside isolated cyber ranges.
-- Grade investigations, response decisions, and written incident reports.
-- Convert completed labs and assessments into verifiable portfolio evidence.
+> What skills are employers asking for, how can I learn them in a realistic environment, and how can I prove that work honestly and effectively?
 
 ---
 
-## Current V0.1 Scope
+## Why I Started It
 
-V0.1 is intentionally focused on architecture and platform foundations rather than autonomous behavior.
+As someone trying to break into cybersecurity, I noticed a recurring problem:
 
-The initial work includes:
+- entry-level roles often still expect experience;
+- labs and self-study can teach useful skills, but they do not automatically translate into professional evidence;
+- job applications are time-consuming and hard to tailor well;
+- skill gaps are easier to see than they are to systematically close.
 
-- FastAPI backend architecture
-- PostgreSQL persistence
-- Next.js / React frontend foundation
-- profile, skill, evidence, job, and application data models
-- audit logging
-- approval workflows
-- data classification
-- provider interfaces
-- local-first AI architecture
-- model-provider abstraction
-- future Ollama support
-- hypervisor-provider abstraction
-- SIEM-provider abstraction
-- threat modeling and security boundaries
+Cyber Career OS is my attempt to create a single system that ties all of those pieces together.
 
-The objective is to make later versions possible without rewriting the entire system.
+---
+
+## Current Scope — V0.1
+
+Version 0.1 is focused on building the **foundation** correctly rather than trying to over-automate too early.
+
+### V0.1 priorities
+
+- architecture and security boundaries;
+- user/profile and verified-skill evidence models;
+- jobs, requirements, matches, and application tracking;
+- provider abstractions for AI, hypervisors, and SIEMs;
+- approval workflows for higher-risk actions;
+- audit logging and documentation;
+- a long-term structure that can grow without major rewrites.
+
+### Core design principles
+
+- **Local-first** where possible
+- **Privacy-conscious** handling of sensitive data
+- **Least privilege** for infrastructure access
+- **Human approval** for consequential actions
+- **Evidence-backed claims** in resumes and application materials
+- **Provider-agnostic architecture** for AI, hypervisors, and SIEMs
+
+---
+
+## Planned System Concept
+
+In later versions, the platform is intended to connect:
+
+- **Career systems** — jobs, resumes, cover letters, application tracking, interviews
+- **Training systems** — mentor guidance, skills, competency tracking, labs, assessments
+- **Cyber range systems** — Proxmox-based isolated training labs and scenario environments
+- **Security operations systems** — SIEM investigations, alerts, cases, evidence, timelines, reporting
+- **Purple Team workflows** — attack reconstruction, missed detection review, detection engineering, tuning
+
+That means the same platform helping me find jobs can also help me build the skills and evidence needed to become a better candidate for those jobs.
+
+---
+
+## Roadmap Vision
+
+<figure class="project-graphic">
+  <img src="/novasecure.github.io/images/cyber-career-os-roadmap.svg" alt="Cyber Career OS roadmap diagram" />
+  <figcaption>Long-term roadmap from a personal career platform to a public open-source system and eventually a simplified self-hosted distribution.</figcaption>
+</figure>
+
+### V1 — Personal Cyber Career OS
+A personal platform for:
+- job discovery and analysis,
+- truthful resumes and cover letters,
+- verified skill/evidence records,
+- lab provisioning,
+- mentor-guided learning,
+- SIEM-driven exercises and incident practice.
+
+### V2 — Adaptive Cyber Training Platform
+Adds:
+- local AI through **Ollama**,
+- intelligent model routing,
+- Purple Team mode,
+- detection engineering,
+- attack replay,
+- SOC shift simulation,
+- adaptive training and skills analysis.
+
+### V3 — Public Open-Source Platform
+Expands into:
+- multi-user support,
+- plugin/module architecture,
+- community scenario packs,
+- public documentation,
+- reusable self-hosted deployment.
+
+### V4 — Cyber Career OS Distribution
+A simplified self-hosted environment, likely built on top of Linux, with:
+- the platform preconfigured,
+- local AI support,
+- cyber-range integration,
+- SIEM options,
+- guided setup,
+- a more accessible install experience.
+
+---
+
+## Technologies and Architecture Direction
+
+The current design direction includes:
+
+- **Backend:** Python, FastAPI
+- **Database:** PostgreSQL
+- **Frontend:** Next.js / React / TypeScript
+- **Local AI:** Ollama
+- **Infrastructure:** Proxmox for isolated labs
+- **Security telemetry:** Wazuh initially, with room for other SIEM providers later
+
+A major architectural goal is to avoid hard-coding the platform around only one AI provider or one infrastructure provider.
 
 ---
 
 ## Security Philosophy
 
-Cyber Career OS is being designed around several rules from the beginning:
+Because this platform is intended to interact with job data, personal information, and eventually cyber-range infrastructure, security architecture is part of the project from the beginning.
 
-### Least privilege
-AI agents should never receive unrestricted access to infrastructure.
+Important principles include:
 
-### Human authority
-Consequential operations such as job submission or destructive infrastructure actions require explicit approval.
+- AI systems should not receive unrestricted infrastructure access.
+- High-impact actions should support approval workflows.
+- Training infrastructure should stay isolated from production/home services.
+- Sensitive information should be classified and handled appropriately.
+- Automation should be auditable.
 
-### Lab isolation
-Controlled offensive-security simulations must remain within explicitly authorized lab environments.
-
-### Evidence over claims
-Generated resumes and portfolio material must distinguish professional employment from personal projects and lab experience.
-
-### Local first
-Sensitive career information, SIEM telemetry, and lab data should be able to remain local. Cloud AI is optional rather than a required architectural dependency.
+This is important both for the platform itself and because the project is meant to reflect how I think about security engineering.
 
 ---
 
-## Long-Term Roadmap
+## Why This Matters as a Portfolio Project
 
-### V1 — Personal Cyber Career OS
+Cyber Career OS is not just a concept I want to talk about later. I want the project history itself to become evidence.
 
-Career automation, job analysis, verified resume generation, skill-gap detection, Proxmox lab provisioning, cybersecurity mentoring, SIEM investigations, controlled attack drills, grading, and portfolio evidence.
+That includes:
 
-### V2 — Adaptive Cyber Training Platform
+- documenting the original problem;
+- defining architecture and security boundaries early;
+- tracking decisions as the design evolves;
+- building incrementally instead of pretending everything exists already;
+- showing how the platform grows from V0.1 into something much larger.
 
-Planned additions include:
+This makes the project useful in two ways:
 
-- Ollama and local-model routing
-- model benchmarking
-- privacy-aware AI routing
-- Purple Team mode
-- detection engineering
-- attack reconstruction and replay
-- SOC shift simulation
-- threat hunting
-- incident-command exercises
-- adaptive training
-- cybersecurity knowledge graph
-
-### V3 — Public Open-Source Platform
-
-The platform is planned to evolve beyond a single-user system with multi-user support, tenant isolation, community scenario packs, plugin interfaces, modular integrations, self-hosted deployment, and contributor documentation.
-
-### V4 — Cyber Career OS Distribution
-
-The long-term goal is a Linux-based distribution or appliance that packages the mature platform and major dependencies into a simple setup experience. Rather than building a new kernel, the plan is to build on a maintained Linux base and provide local AI, cyber-range, SIEM, training, and career capabilities through a guided installation.
+1. it may eventually help me directly manage my learning and job search;
+2. it already demonstrates systems thinking, security design, and long-term project planning.
 
 ---
 
-## Why I Am Documenting It This Early
+## Current Status
 
-This project is being documented from the beginning rather than only after it works.
+Cyber Career OS is currently in the **V0.1 planning and foundation stage**.
 
-That means the portfolio will include the architecture decisions, threat model, mistakes, redesigns, implementation milestones, screenshots, and version history that lead to the final system.
+The first public milestones are:
 
-The goal is for the development process itself to become evidence of skills in:
+- establish the architecture;
+- define the constitution and design principles;
+- create the repository foundation;
+- begin implementation with maintainability and security in mind.
 
-- systems design
-- security architecture
-- Python development
-- API design
-- infrastructure automation
-- AI integration
-- threat modeling
-- documentation
-- testing
-- secure software development
-
----
-
-## Project Status
-
-**Current milestone:** V0.1 foundation
-
-**Started:** September 2026
-
-This page will be updated as the implementation moves from architecture into working components and later releases.
+Project updates, milestones, and documentation will be added as development continues.
