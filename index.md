@@ -27,13 +27,13 @@ title: Hayden Ochoa | Cybersecurity Portfolio
   <div class="project-grid">
     <article class="project-card flagship">
       <div class="project-meta">
-        <span class="status">V0.3.0 • CAREER INTELLIGENCE COMPLETE</span>
+        <span class="status">V0.4.0 • HYBRID AI & USABILITY COMPLETE</span>
         <span class="tag">FLAGSHIP</span>
       </div>
       <h3>Cyber Career OS</h3>
-      <p>A local-first, AI-assisted cybersecurity career and training platform. V0.3.0 adds deterministic evidence-linked job fit analysis, normalized requirements, capability snapshots, skill-versus-evidence gaps, application readiness, training recommendations, workflow history, and stale-result detection while preserving the security controls introduced in V0.2.</p>
-      <div class="stack-list">FastAPI • PostgreSQL • SQLAlchemy • Alembic • Next.js • Docker • Security Architecture</div>
-      <a class="text-link" href="{{ '/projects/cyber-career-os/' | relative_url }}">View V0.3.0 implementation →</a>
+      <p>A local-first, AI-assisted cybersecurity career and training platform. V0.4.0 adds real frontend authentication, USER/ADMIN access control, operator visibility, configurable Ollama-first model routing, optional cloud-provider support, structured AI proposals, strict schema and source validation, provider diagnostics, benchmarking, and human-reviewed AI-assisted creation of jobs, skills, evidence, and profile updates while preserving deterministic career analysis.</p>
+      <div class="stack-list">FastAPI • PostgreSQL • SQLAlchemy • Alembic • Next.js • Ollama • Docker • Security Architecture</div>
+      <a class="text-link" href="{{ '/projects/cyber-career-os/' | relative_url }}">View V0.4.0 implementation →</a>
     </article>
 
     <article class="project-card">
@@ -63,8 +63,8 @@ title: Hayden Ochoa | Cybersecurity Portfolio
   <div class="section-kicker">DIRECTION</div>
   <h2>Current path</h2>
   <div class="timeline">
-    <div><strong>Now</strong><span>Build Cyber Career OS Indev V0.4: hybrid local/cloud AI, real frontend authentication, assisted data entry, provider benchmarking, and a friendlier operator experience.</span></div>
-    <div><strong>Next</strong><span>Land an entry-level SOC, security analyst, NOC, or infrastructure role.</span></div>
+    <div><strong>Now</strong><span>Build Cyber Career OS V0.4.1 “Herobrine”: a Windows launcher/runtime supervisor and an owner-level developer role for safe day-to-day testing without weakening audit or policy controls.</span></div>
+    <div><strong>Next</strong><span>Continue toward Infdev V0.5 career automation and job-intake workflows, while pursuing an entry-level SOC, security analyst, NOC, or infrastructure role.</span></div>
     <div><strong>Long term</strong><span>Grow into incident response, detection engineering, and defensive security engineering.</span></div>
   </div>
 </section>
