@@ -27,13 +27,13 @@ title: Hayden Ochoa | Cybersecurity Portfolio
   <div class="project-grid">
     <article class="project-card flagship">
       <div class="project-meta">
-        <span class="status">V0.2.0 • SECURITY FOUNDATION COMPLETE</span>
+        <span class="status">V0.3.0 • CAREER INTELLIGENCE COMPLETE</span>
         <span class="tag">FLAGSHIP</span>
       </div>
       <h3>Cyber Career OS</h3>
-      <p>A local-first, AI-assisted cybersecurity career and training platform. V0.2.0 adds authenticated local accounts, centralized ownership enforcement, full resource CRUD, target- and parameter-bound one-time approvals, replay protection, session revocation, privacy-aware provider policy, correlation IDs, and auditable security-sensitive actions on top of the V0.1 application foundation.</p>
+      <p>A local-first, AI-assisted cybersecurity career and training platform. V0.3.0 adds deterministic evidence-linked job fit analysis, normalized requirements, capability snapshots, skill-versus-evidence gaps, application readiness, training recommendations, workflow history, and stale-result detection while preserving the security controls introduced in V0.2.</p>
       <div class="stack-list">FastAPI • PostgreSQL • SQLAlchemy • Alembic • Next.js • Docker • Security Architecture</div>
-      <a class="text-link" href="{{ '/projects/cyber-career-os/' | relative_url }}">View V0.2.0 implementation →</a>
+      <a class="text-link" href="{{ '/projects/cyber-career-os/' | relative_url }}">View V0.3.0 implementation →</a>
     </article>
 
     <article class="project-card">
@@ -63,7 +63,7 @@ title: Hayden Ochoa | Cybersecurity Portfolio
   <div class="section-kicker">DIRECTION</div>
   <h2>Current path</h2>
   <div class="timeline">
-    <div><strong>Now</strong><span>Build Cyber Career OS V0.3: evidence-backed career workflows, deterministic fit analysis, skill-gap detection, and workflow orchestration.</span></div>
+    <div><strong>Now</strong><span>Build Cyber Career OS Indev V0.4: hybrid local/cloud AI, real frontend authentication, assisted data entry, provider benchmarking, and a friendlier operator experience.</span></div>
     <div><strong>Next</strong><span>Land an entry-level SOC, security analyst, NOC, or infrastructure role.</span></div>
     <div><strong>Long term</strong><span>Grow into incident response, detection engineering, and defensive security engineering.</span></div>
   </div>
