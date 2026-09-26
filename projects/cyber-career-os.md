@@ -6,8 +6,8 @@ permalink: /projects/cyber-career-os/
 
 # Cyber Career OS
 
-**Status:** `V0.2.0 • Identity, Policy & Resource Management Complete`  
-**Current focus:** `V0.3 • Career Workflow & Intelligence Layer`
+**Status:** `V0.3.0 • Career Workflow & Intelligence Complete`  
+**Current focus:** `Indev V0.4 • Hybrid AI, Frontend Authentication & Assisted Data Entry`
 
 **Cyber Career OS** is a local-first, AI-assisted cybersecurity career and training platform I am designing and building to solve a problem I am facing directly as an entry-level cybersecurity candidate: how to close the gap between learning security skills and proving those skills in a way that helps lead to real career opportunities.
 
@@ -18,64 +18,77 @@ It is being designed from the beginning as both a **real personal tool** and a *
   <figcaption>The core loop: learn skills, prove them with evidence, apply them to career opportunities, and improve by turning gaps into new labs.</figcaption>
 </figure>
 
-## V0.2.0 — Identity, Policy & Resource Management
+## V0.3.0 — Career Workflow & Intelligence Layer
 
-V0.2 turns the security architecture introduced in V0.1 into enforceable application behavior.
+V0.3 turns the secure application foundation into the first end-to-end career-intelligence workflow.
 
 ### Implemented
 
-- local account authentication with Argon2 password hashing
-- revocable opaque bearer sessions and logout
-- centralized authenticated ownership enforcement rather than trusting client-supplied owner IDs
-- profile, skill, evidence, job, requirement, and application CRUD
-- validated application-state transitions
-- centralized action-risk handling
-- target- and parameter-bound approval requests
-- expiring, single-use approval consumption with replay protection
-- correlation IDs and centralized audit recording
-- classification-aware provider policy and sensitive-data redaction
-- account deletion with approval enforcement and immediate session invalidation
-- clearer OpenAPI grouping, bearer-auth workflow, and manual validation guidance
-- reproducible Alembic migration history across V0.1 and V0.2 schema evolution
+- synchronous owner-scoped workflow runs
+- evidence-aware capability snapshots
+- deterministic requirement normalization
+- persisted fit assessments and requirement-level explanations
+- required/preferred coverage metrics without claiming hiring probability
+- linked skill/evidence provenance
+- skill-gap versus evidence-gap distinction
+- gap lifecycle management
+- application-readiness analysis
+- deterministic training recommendations
+- stale-result detection through input fingerprints
+- historical assessments that are not silently rewritten when inputs change
+- correlation-aware auditing through the existing V0.2 services
+- no live model-provider or network dependency in the analysis engine
 
 ### Release verification
 
-The final V0.2.0 release candidate passed:
+V0.3.0 passed:
 
-- backend tests — **21 passed**
-- Ruff formatting — **passed**
-- Ruff linting — **passed**
-- PostgreSQL migration generation — **passed**
-- live PostgreSQL migration application through the V0.2 migration chain — **passed**
-- manual Swagger `/docs` authentication, ownership, CRUD, audit, and approval validation — **passed**
-- account-deletion approval consumption and replay/session behavior — **passed**
-- frontend production checks from the V0.2 release candidate — **passed**
-- npm security audit — **0 vulnerabilities reported**
+- backend tests — **26 passed**
+- Ruff formatting and linting — **passed**
+- frontend TypeScript and production build — **passed**
+- npm audit — **0 vulnerabilities reported**
+- live PostgreSQL migration `0003 → 0004` — **passed**
+- fresh PostgreSQL migration chain `0001 → 0004` — **passed**
+- manual Swagger `/docs` validation — **passed**
+- deterministic re-analysis, skill/evidence gap behavior, stale-assessment handling, ownership isolation, and frontend token/session behavior — **validated manually**
 
-### RC issue discovered and fixed
+V0.3 preserves the V0.2 approval, ownership, privacy, audit, and session-security controls rather than bypassing them for convenience.
 
-Manual release validation caught an approval-consumption mismatch before final release. Approval creation and account deletion were not using the exact same action, target, and parameter contract. Runtime diagnostics exposed the mismatch, the API contract was standardized, invalid legacy/non-empty account-deletion approvals were rejected, regression tests were added, and the live deletion flow was revalidated successfully.
+---
 
-This became part of the project evidence: the release process found a security-sensitive integration defect that unit-level verification alone had not exposed.
+## V0.2.0 — Identity, Policy & Resource Management
+
+V0.2 introduced enforceable application security:
+
+- local account authentication with Argon2 password hashing
+- revocable opaque bearer sessions and logout
+- centralized ownership enforcement
+- profile, skill, evidence, job, requirement, and application CRUD
+- validated application-state transitions
+- centralized action-risk handling
+- target- and parameter-bound approvals
+- expiry, single-use consumption, and replay protection
+- correlation IDs and centralized auditing
+- classification-aware provider policy and redaction
+- account deletion with approval enforcement and immediate session invalidation
+- reproducible Alembic migration history
+
+Manual RC testing discovered an approval-consumption contract mismatch before final release. The defect was diagnosed from live runtime values, fixed, regression-tested, and retained as project evidence.
 
 ---
 
 ## V0.1.0 — Foundation
 
-The first milestone established the application and architecture foundation:
+The first milestone established:
 
-- FastAPI backend with versioned CRUD endpoints and OpenAPI documentation
-- PostgreSQL persistence using SQLAlchemy
-- Alembic migration framework
-- owner-aware users, profiles, skills, evidence, jobs, job requirements, job matches, applications, approvals, and audit records
-- explicit data-classification and action-risk types
-- model, hypervisor, SIEM, and agent interfaces
-- deterministic mock model provider with secret-data rejection
-- Next.js status frontend
-- Docker Compose PostgreSQL service
-- architecture documentation, ADRs, threat modeling, roadmap, changelog, and development logs
-
-V0.1.0 passed backend tests, Ruff checks, PostgreSQL migration generation, the Next.js production build, and an npm security audit with no reported vulnerabilities.
+- FastAPI and versioned OpenAPI endpoints
+- PostgreSQL / SQLAlchemy / Alembic
+- owner-aware career-domain models
+- provider contracts for models, hypervisors, SIEMs, and agents
+- deterministic mock model provider
+- Next.js frontend foundation
+- Docker Compose development database
+- architecture documentation, ADRs, threat model, roadmap, changelog, and development logs
 
 ---
 
@@ -83,20 +96,11 @@ V0.1.0 passed backend tests, Ruff checks, PostgreSQL migration generation, the N
 
 The architecture intentionally separates AI agents from privileged services.
 
-Agents participate in workflows through explicit interfaces and do not receive direct access to:
-
-- database sessions
-- unrestricted shell execution
-- hypervisor credentials
-- SIEM credentials
-
-The application follows a controlled path:
-
 > Agent → Tool Request → Authorization / Policy Layer → Controlled Service → External System
 
-V0.2 now enforces authentication, resource ownership, approval binding, replay protection, session revocation, centralized audit handling, and privacy-aware provider boundaries before live AI or infrastructure control is introduced.
+Agents do not receive direct unrestricted access to database sessions, shells, hypervisor credentials, or SIEM credentials.
 
-The project threat model continues to record remaining gaps rather than treating architectural intent as already-enforced security.
+The system distinguishes evidence-backed facts from inferred or unverified information. Labs and simulations are never silently represented as professional employment.
 
 ---
 
@@ -109,122 +113,75 @@ Cyber Career OS connects four parts of the same problem:
 3. **Apply** — use truthful, evidence-backed profile data to improve resumes, cover letters, and job targeting.
 4. **Improve** — identify recurring skill gaps from the job market and feed them back into future labs and projects.
 
-The long-term idea is to build a system that helps answer:
-
-> What skills are employers asking for, how can I learn them in a realistic environment, and how can I prove that work honestly and effectively?
-
 ---
 
-## Why I Started It
+## Indev V0.4 — Hybrid AI, Frontend Authentication & Assisted Data Entry
 
-As someone trying to break into cybersecurity, I noticed a recurring problem:
-
-- entry-level roles often still expect experience;
-- labs and self-study can teach useful skills, but they do not automatically translate into professional evidence;
-- job applications are time-consuming and hard to tailor well;
-- skill gaps are easier to see than they are to systematically close.
-
-Cyber Career OS is my attempt to create a single system that ties all of those pieces together.
-
----
-
-## Current Architecture Direction
-
-The implemented monorepo uses:
-
-- **Backend:** Python / FastAPI
-- **Database:** PostgreSQL / SQLAlchemy / Alembic
-- **Frontend:** Next.js
-- **Development database:** Docker Compose
-
-The codebase uses provider contracts so domain logic does not depend directly on a specific AI platform, hypervisor, or SIEM.
-
-Planned provider directions include:
-
-- **Local AI:** Ollama
-- **Cyber range:** Proxmox
-- **Security telemetry:** Wazuh initially
-
-Live providers remain intentionally staged behind the policy and workflow layers rather than being connected directly to agents.
-
----
-
-## Next Milestone — V0.3
-
-V0.3 begins turning the secure data foundation into a useful career workflow system.
+The next milestone begins the project's Minecraft-inspired development-era naming while retaining semantic version numbers.
 
 Planned work includes:
 
-- workflow/run primitives with explicit state transitions and auditable execution
-- evidence-aware candidate profile assembly
-- deterministic job requirement normalization and fit analysis
-- explainable skill-gap detection
-- evidence-backed match scoring that never invents qualifications
-- application readiness checks
-- training recommendations generated from identified gaps
-- APIs and a small UI for reviewing workflow outputs and their supporting evidence
+- real frontend registration, login, logout, protected routes, token/session handling, and expired-session UX
+- a small USER/ADMIN role model with privacy-preserving operator visibility
+- friendlier product documentation and improved Swagger examples/workflow guidance
+- model registry and `ModelRouter`
+- local Ollama provider as the preferred/default AI path
+- optional xAI/Grok provider behind the same provider interface when separately configured
+- local-only and hybrid routing modes governed by capability, privacy classification, availability, and policy
+- structured-output validation and provider health/fallback handling
+- benchmark fixtures for model quality, latency, schema compliance, and routing decisions
+- AI-assisted creation proposals for jobs, requirements, skills, evidence mappings, and profile changes
+- explicit preview/confirmation before any AI-proposed mutation is committed
+- provenance recording for model-generated proposals
 
-V0.3 will keep model-generated content behind provider interfaces and deterministic fallbacks. Live Ollama routing, Proxmox control, SIEM integration, offensive scenarios, and autonomous job application submission remain separate later milestones.
+The deterministic V0.3 analysis engine remains the source of truth. AI improves ingestion and assistance; it does not invent verified experience.
 
 ---
 
-## Roadmap Vision
+## Refreshed Roadmap to 1.0
 
-<figure class="project-graphic">
-  <img src="/novasecure.github.io/images/cyber-career-os-roadmap.svg" alt="Cyber Career OS roadmap diagram" />
-  <figcaption>Long-term roadmap from a personal career platform to a public open-source system and eventually a simplified self-hosted distribution.</figcaption>
-</figure>
+The early roadmap originally moved toward Proxmox sooner. V0.2 and V0.3 deliberately shifted effort into identity, policy, and deterministic career intelligence first. The destination remains the same, but the path is now safer and more useful.
 
-### V1 — Personal Cyber Career OS
-A personal platform for:
-- job discovery and analysis,
-- truthful resumes and cover letters,
-- verified skill/evidence records,
-- lab provisioning,
-- mentor-guided learning,
-- SIEM-driven exercises and incident practice.
+### Indev V0.4 — Hybrid AI & Usability
+Real frontend auth, operator/admin visibility, better docs, Ollama-first hybrid model routing, optional cloud-provider support, model benchmarking, and approval-based AI-assisted data entry.
+
+### Infdev V0.5 — Career Automation & Job Intake
+Assisted job discovery/import, deduplication, job-post parsing, truthful resume/cover-letter preparation, application tracking improvements, and stronger career-agent workflows. External content remains untrusted data and all meaningful mutations remain reviewable.
+
+### Alpha V0.6 — Controlled Lab Provisioning & Mentor
+Bring back the infrastructure work from the original roadmap: read-only Proxmox discovery first, then tightly scoped provisioning through the hypervisor provider, lab templates, training plans, mentor-guided exercises, approvals, quotas, and teardown controls.
+
+### Alpha V0.7 — SIEM & SOC Practice
+Connect the SIEM provider, initially targeting Wazuh; ingest lab telemetry; create investigation cases; map activity to ATT&CK; support analyst notes, timelines, evidence, grading inputs, and SOC-style workflows.
+
+### Beta V0.8 — Controlled Scenarios, Purple Team & Grading
+Declarative isolated scenarios, controlled attack simulation/replay inside the authorized cyber range, Purple Team feedback, detection engineering exercises, scoring, and evidence generation. No arbitrary external offensive execution.
+
+### Beta V0.9 — Portfolio, Resume Eligibility & Release Hardening
+Turn verified project/lab results into portfolio-ready evidence and truthful resume eligibility; improve exports, documentation, onboarding, backup/restore, deployment reliability, security hardening, and the full end-to-end release candidate experience.
+
+### Release 1.0 — Personal Cyber Career OS
+The complete personal loop:
+
+> job discovery → fit analysis → verified profile → truthful application materials → skill gaps → training/lab → isolated range → telemetry/SOC investigation → grading → verified evidence → portfolio/resume → stronger applications
+
+1.0 should be usable as a coherent personal system without requiring every future V2/V3/V4 idea to be complete.
+
+---
+
+## Beyond 1.0
 
 ### V2 — Adaptive Cyber Training Platform
-Adds:
-- local AI through **Ollama**,
-- intelligent model routing,
-- Purple Team mode,
-- detection engineering,
-- attack replay,
-- SOC shift simulation,
-- adaptive training and skills analysis.
+Deeper model routing, Purple Team workflows, attack reconstruction/replay, detection engineering, SOC shifts, virtual coworkers, threat hunting, incident command, forensics, and adaptive training.
 
 ### V3 — Public Open-Source Platform
-Expands into:
-- multi-user support,
-- plugin/module architecture,
-- community scenario packs,
-- public documentation,
-- reusable self-hosted deployment.
+Multi-user deployment, plugins/modules, community scenario packs, public documentation, and reusable self-hosting.
 
 ### V4 — Cyber Career OS Distribution
-A simplified self-hosted environment, likely built on top of Linux, with:
-- the platform preconfigured,
-- local AI support,
-- cyber-range integration,
-- SIEM options,
-- guided setup,
-- a more accessible install experience.
+A simplified Linux-based deployment/appliance with guided setup, local/hybrid/cloud AI choices, cyber-range and SIEM integrations, and easier installation.
 
 ---
 
 ## Why This Matters as a Portfolio Project
 
-Cyber Career OS is not just a concept I want to talk about later. I want the project history itself to become evidence.
-
-That includes:
-
-- documenting the original problem;
-- defining architecture and security boundaries early;
-- tracking decisions as the design evolves;
-- building incrementally instead of pretending everything exists already;
-- testing security-sensitive behavior manually as well as automatically;
-- recording defects discovered during release validation and how they were resolved;
-- showing how the platform grows from foundation code into a practical career and training system.
-
-V0.2.0 provides the second concrete checkpoint: the application foundation is now protected by real identity, ownership, approval, audit, and privacy controls, creating the base needed for higher-level workflows in V0.3.
+Cyber Career OS is not just a concept. The project history itself is evidence: architecture decisions, migrations, threat modeling, release validation, bugs found in live integration testing, regression tests, and incremental delivery from a secure foundation toward a practical career and training platform.
