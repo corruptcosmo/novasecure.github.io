@@ -6,8 +6,8 @@ permalink: /projects/cyber-career-os/
 
 # Cyber Career OS
 
-**Status:** `V0.3.0 • Career Workflow & Intelligence Complete`  
-**Current focus:** `Indev V0.4 • Hybrid AI, Frontend Authentication & Assisted Data Entry`
+**Status:** `V0.4.0 • Hybrid AI & Usability Complete`  
+**Current focus:** `V0.4.1 “Herobrine” • Runtime Launcher & Developer Access`
 
 **Cyber Career OS** is a local-first, AI-assisted cybersecurity career and training platform I am designing and building to solve a problem I am facing directly as an entry-level cybersecurity candidate: how to close the gap between learning security skills and proving those skills in a way that helps lead to real career opportunities.
 
@@ -18,9 +18,59 @@ It is being designed from the beginning as both a **real personal tool** and a *
   <figcaption>The core loop: learn skills, prove them with evidence, apply them to career opportunities, and improve by turning gaps into new labs.</figcaption>
 </figure>
 
+## V0.4.0 — Hybrid AI, Frontend Authentication & Assisted Data Entry
+
+V0.4 adds the first live AI-assisted workflows while preserving the deterministic and security-focused architecture from earlier releases.
+
+### Implemented
+
+- real frontend registration, login, logout, protected routes, and session-expiry handling
+- USER and ADMIN roles with limited, privacy-preserving operator visibility
+- improved product documentation and API/Swagger guidance
+- provider registry and privacy-aware `ModelRouter`
+- configurable Ollama integration as the preferred local AI path
+- optional cloud-provider support behind the same provider abstraction
+- local-only and hybrid routing modes governed by capability, classification, provider health, and policy
+- strict Pydantic structured-output validation
+- strongly typed proposal schemas for JOB, SKILL, EVIDENCE, and PROFILE data
+- schema-constrained Ollama generation with bounded retries and sanitized diagnostics
+- reasoning controls for structured extraction workloads
+- output-limit and malformed-response diagnostics
+- model benchmarking and provider-health visibility
+- AI-assisted proposals for jobs, requirements, skills, evidence, and profile updates
+- explicit preview and item-level acceptance before AI-proposed data can mutate career records
+- source-support validation to prevent unsupported job facts and invented links
+- provenance recording for AI-assisted records
+- deterministic V0.3 career analysis remains provider-independent and usable when AI is unavailable
+
+### Live integration findings
+
+Manual release-candidate testing found several defects that automated mock-provider tests did not expose:
+
+- Ollama was initially given generic JSON mode rather than the actual Pydantic JSON schema
+- Qwen 3.5 reasoning could consume the structured-output budget before producing final content
+- proposal `data` was originally typed as a generic dictionary, hiding the actual nested JOB/SKILL/EVIDENCE/PROFILE contract from the model
+- provider diagnostics were expanded to distinguish policy, timeout, malformed JSON, output truncation, schema validation, and semantic/source failures without logging private prompts or credentials
+
+The final live Qwen/Ollama workflow successfully created reviewed job and evidence proposals and persisted accepted records into the expected application views.
+
+### Release verification
+
+V0.4.0 passed:
+
+- backend tests — **53 passed**
+- Ruff — **passed**
+- frontend TypeScript checks — **passed**
+- frontend production build — **passed**
+- live Ollama/Qwen proposal generation — **validated manually**
+- accepted job and evidence proposal persistence/UI behavior — **validated manually**
+- provider outage, ownership/privacy boundaries, deterministic V0.3 regression behavior, and release checklist — **validated manually during live sign-off**
+
+---
+
 ## V0.3.0 — Career Workflow & Intelligence Layer
 
-V0.3 turns the secure application foundation into the first end-to-end career-intelligence workflow.
+V0.3 turned the secure application foundation into the first end-to-end career-intelligence workflow.
 
 ### Implemented
 
@@ -115,35 +165,30 @@ Cyber Career OS connects four parts of the same problem:
 
 ---
 
-## Indev V0.4 — Hybrid AI, Frontend Authentication & Assisted Data Entry
+## V0.4.1 “Herobrine” — Runtime Launcher & Developer Access
 
-The next milestone begins the project's Minecraft-inspired development-era naming while retaining semantic version numbers.
+Before beginning Infdev V0.5, the next patch focuses on day-to-day usability and safe owner/developer operation.
 
-Planned work includes:
+Planned work:
 
-- real frontend registration, login, logout, protected routes, token/session handling, and expired-session UX
-- a small USER/ADMIN role model with privacy-preserving operator visibility
-- friendlier product documentation and improved Swagger examples/workflow guidance
-- model registry and `ModelRouter`
-- local Ollama provider as the preferred/default AI path
-- optional xAI/Grok provider behind the same provider interface when separately configured
-- local-only and hybrid routing modes governed by capability, privacy classification, availability, and policy
-- structured-output validation and provider health/fallback handling
-- benchmark fixtures for model quality, latency, schema compliance, and routing decisions
-- AI-assisted creation proposals for jobs, requirements, skills, evidence mappings, and profile changes
-- explicit preview/confirmation before any AI-proposed mutation is committed
-- provenance recording for model-generated proposals
+- a Windows `CyberCareerOS.exe` launcher/runtime supervisor
+- start, stop, and restart PostgreSQL, backend, frontend, and related local services from one place
+- service/provider health and version visibility
+- consolidated runtime logs and browser launch
+- safe migration/startup checks and update preparation
+- a dedicated **HEROBRINE** owner/developer role for the project maintainer
+- HEROBRINE inherits administrative/operator capabilities and may access developer-only diagnostics and test workflows
+- HEROBRINE remains authenticated, audited, policy-aware, and subject to explicit safety boundaries rather than bypassing authorization globally
+- normal USER and ADMIN behavior remains unchanged
 
-The deterministic V0.3 analysis engine remains the source of truth. AI improves ingestion and assistance; it does not invent verified experience.
+The role is intentionally a developer/owner capability tier, not a hidden unrestricted backdoor.
 
 ---
 
 ## Refreshed Roadmap to 1.0
 
-The early roadmap originally moved toward Proxmox sooner. V0.2 and V0.3 deliberately shifted effort into identity, policy, and deterministic career intelligence first. The destination remains the same, but the path is now safer and more useful.
-
-### Indev V0.4 — Hybrid AI & Usability
-Real frontend auth, operator/admin visibility, better docs, Ollama-first hybrid model routing, optional cloud-provider support, model benchmarking, and approval-based AI-assisted data entry.
+### V0.4.1 “Herobrine” — Runtime & Developer Experience
+Windows launcher/runtime supervision plus a dedicated audited owner/developer role for safe development and continued live use.
 
 ### Infdev V0.5 — Career Automation & Job Intake
 Assisted job discovery/import, deduplication, job-post parsing, truthful resume/cover-letter preparation, application tracking improvements, and stronger career-agent workflows. External content remains untrusted data and all meaningful mutations remain reviewable.
