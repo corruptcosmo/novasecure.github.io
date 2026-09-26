@@ -27,13 +27,13 @@ title: Hayden Ochoa | Cybersecurity Portfolio
   <div class="project-grid">
     <article class="project-card flagship">
       <div class="project-meta">
-        <span class="status">V0.1.0 • FOUNDATION COMPLETE</span>
+        <span class="status">V0.2.0 • SECURITY FOUNDATION COMPLETE</span>
         <span class="tag">FLAGSHIP</span>
       </div>
       <h3>Cyber Career OS</h3>
-      <p>A local-first, AI-assisted cybersecurity career and training platform. V0.1.0 now includes a working FastAPI/PostgreSQL foundation, owner-aware domain models, approval and audit primitives, provider contracts, a Next.js status UI, automated tests, architecture documentation, and an initial threat model.</p>
+      <p>A local-first, AI-assisted cybersecurity career and training platform. V0.2.0 adds authenticated local accounts, centralized ownership enforcement, full resource CRUD, target- and parameter-bound one-time approvals, replay protection, session revocation, privacy-aware provider policy, correlation IDs, and auditable security-sensitive actions on top of the V0.1 application foundation.</p>
       <div class="stack-list">FastAPI • PostgreSQL • SQLAlchemy • Alembic • Next.js • Docker • Security Architecture</div>
-      <a class="text-link" href="{{ '/projects/cyber-career-os/' | relative_url }}">View V0.1.0 foundation →</a>
+      <a class="text-link" href="{{ '/projects/cyber-career-os/' | relative_url }}">View V0.2.0 implementation →</a>
     </article>
 
     <article class="project-card">
@@ -63,7 +63,7 @@ title: Hayden Ochoa | Cybersecurity Portfolio
   <div class="section-kicker">DIRECTION</div>
   <h2>Current path</h2>
   <div class="timeline">
-    <div><strong>Now</strong><span>Test Cyber Career OS V0.1.0 and begin V0.2 identity and policy enforcement.</span></div>
+    <div><strong>Now</strong><span>Build Cyber Career OS V0.3: evidence-backed career workflows, deterministic fit analysis, skill-gap detection, and workflow orchestration.</span></div>
     <div><strong>Next</strong><span>Land an entry-level SOC, security analyst, NOC, or infrastructure role.</span></div>
     <div><strong>Long term</strong><span>Grow into incident response, detection engineering, and defensive security engineering.</span></div>
   </div>
