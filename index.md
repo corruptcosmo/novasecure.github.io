@@ -45,6 +45,17 @@ title: Hayden Ochoa | Cybersecurity Portfolio
       <div class="stack-list">Wazuh / Elastic • Windows • Linux • Proxmox</div>
       <a class="text-link" href="{{ '/projects/homesiem/' | relative_url }}">View documentation →</a>
     </article>
+
+    <article class="project-card">
+      <div class="project-meta">
+        <span class="status">3D PROTOTYPE</span>
+        <span class="tag">SELF-HOSTED</span>
+      </div>
+      <h3>Cyber Career World</h3>
+      <p>An original interactive voxel-cyber companion site that turns Cyber Career OS into an explorable tutorial world while doubling as a hands-on project in Three.js, WebGL, Docker, reverse proxying, HTTPS, and self-hosted web infrastructure.</p>
+      <div class="stack-list">Three.js • WebGL • Vite • Docker • Nginx • Caddy • DNS / TLS • 3D UI</div>
+      <a class="text-link" href="{{ '/projects/cyber-career-world/' | relative_url }}">View project notes →</a>
+    </article>
   </div>
 </section>
 
