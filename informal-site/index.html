@@ -1,118 +1,105 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#07110f">
-  <meta name="description" content="Explore Cyber Career OS through an original voxel-cyber interface.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07100f">
+  <meta name="description" content="Explore Cyber Career OS as an original interactive voxel-cyber training world.">
   <title>Cyber Career OS // World</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <div class="scanlines" aria-hidden="true"></div>
-
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Cyber Career OS World home">
-      <span class="brand-cube" aria-hidden="true"><i></i></span>
-      <span class="brand-copy"><strong>CYBER CAREER OS</strong><small>WORLD // DEV BUILD</small></span>
+    <a class="brand" href="#world" aria-label="Cyber Career OS World home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-copy">
+        <strong>CYBER CAREER OS</strong>
+        <small>WORLD // 3D PROTOTYPE</small>
+      </span>
     </a>
-    <nav aria-label="Primary navigation">
-      <a href="#map">Map</a>
-      <a href="#loop">Loop</a>
-      <a href="#systems">Systems</a>
-      <a href="#buildlog">Build Log</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#world">World</a>
+      <a href="#tutorial">Tutorial</a>
+      <a href="#direction">Direction</a>
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero shell">
+  <main>
+    <section id="world" class="world-hero" aria-label="Interactive Cyber Career OS world">
+      <div id="world-canvas" aria-label="Interactive 3D voxel world"></div>
+
       <div class="hero-copy">
-        <p class="eyebrow">PLAYER: HAYDEN // MODE: CAREER BUILD</p>
-        <h1>BUILD THE SKILLS.<br><span>PROVE THE WORK.</span></h1>
-        <p class="lead">Cyber Career OS is my local-first platform for turning homelab work, security practice, applications, and agent-assisted workflows into one connected career system.</p>
+        <p class="eyebrow">SPAWN POINT // CAREER BUILD 01</p>
+        <h1>Learn the world.<br><span>Build your path.</span></h1>
+        <p class="lead">A block-built cyber training hub inspired by the feeling of classic tutorial worlds—not their assets. Explore the systems behind Cyber Career OS as landmarks in one connected world.</p>
         <div class="hero-actions">
-          <a class="btn primary" href="#map">Enter the world</a>
-          <a class="btn ghost" href="#systems">Inspect systems</a>
-        </div>
-        <div class="status-row" aria-label="Project status">
-          <span><b>WORLD</b> ONLINE</span>
-          <span><b>BUILD</b> PRE-1.0</span>
-          <span><b>FOCUS</b> BLUE TEAM</span>
+          <button id="tutorial-button" class="btn primary" type="button">Start guided tour</button>
+          <button id="reset-view" class="btn" type="button">Return to spawn</button>
         </div>
       </div>
 
-      <div class="hero-scene" aria-label="Abstract voxel cyber landscape">
-        <div class="sun-grid"></div>
-        <div class="voxel-stack stack-a"><i></i><i></i><i></i><i></i></div>
-        <div class="voxel-stack stack-b"><i></i><i></i><i></i></div>
-        <div class="voxel-stack stack-c"><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="terminal-card">
-          <span>&gt; career_os.boot()</span>
-          <span class="good">[OK] evidence pipeline</span>
-          <span class="good">[OK] lab systems</span>
-          <span class="warn">[DEV] agent network</span>
-          <span class="cursor">_</span>
+      <aside class="world-hud" aria-label="World status">
+        <div class="hud-box"><small>World</small><strong>ONLINE</strong></div>
+        <div class="hud-box"><small>Render</small><strong>3D / WEBGL</strong></div>
+        <div class="hud-box"><small>Assets</small><strong>ORIGINAL</strong></div>
+      </aside>
+
+      <aside id="zone-panel" class="zone-panel" aria-live="polite">
+        <span id="zone-kicker" class="eyebrow">ZONE</span>
+        <h2 id="zone-title">Landmark</h2>
+        <p id="zone-copy">Select a landmark to inspect it.</p>
+        <span id="zone-meta" class="zone-meta">SYSTEM // READY</span>
+      </aside>
+
+      <div id="canvas-hint" class="canvas-hint">DRAG TO LOOK • SCROLL TO ZOOM • CLICK A LANDMARK</div>
+    </section>
+
+    <div class="content">
+      <section id="tutorial" class="section world-shell">
+        <p class="eyebrow">TUTORIAL WORLD LOGIC</p>
+        <h2>Spawn. Learn. Wander. Discover.</h2>
+        <p class="section-copy">The world begins at one readable central landmark, then lets you branch outward into increasingly specialized areas. Each zone will eventually contain its own interactive demonstrations, project evidence, terminals, hidden details, and links into deeper pages.</p>
+
+        <div class="tutorial-grid">
+          <article class="tutorial-card"><span>01 // SPAWN</span><h3>Orientation Plaza</h3><p>Learn what Cyber Career OS is, how the world is organized, and where each path leads.</p></article>
+          <article class="tutorial-card"><span>02 // BUILD</span><h3>Career Base</h3><p>Profile, skills, applications, job targets, approvals, and your working career state.</p></article>
+          <article class="tutorial-card"><span>03 // TRAIN</span><h3>Cyber Range</h3><p>Labs, SIEM telemetry, investigations, controlled attack practice, and mentor-guided progression.</p></article>
+          <article class="tutorial-card"><span>04 // PROVE</span><h3>Evidence Vault</h3><p>Turn the things you build and fix into reviewable proof instead of just claims on a résumé.</p></article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="map" class="shell section-block">
-      <div class="section-heading"><p class="eyebrow">WORLD MAP</p><h2>Four zones. One career loop.</h2></div>
-      <div class="world-grid">
-        <article class="zone grass-zone"><span class="zone-code">01</span><h3>Career Base</h3><p>Profile, skills, evidence, job targets, applications, approvals, and everything needed to keep the search grounded.</p><span class="zone-chip">FOUNDATION</span></article>
-        <article class="zone crystal-zone"><span class="zone-code">02</span><h3>Agent Forge</h3><p>Specialist agents for mentoring, research, resumes, application preparation, coordination, and reviewed actions.</p><span class="zone-chip">AUTOMATION</span></article>
-        <article class="zone red-zone"><span class="zone-code">03</span><h3>Cyber Range</h3><p>Proxmox-backed lab environments, SIEM telemetry, guided investigations, attack simulation, and evidence generation.</p><span class="zone-chip">TRAINING</span></article>
-        <article class="zone obsidian-zone"><span class="zone-code">04</span><h3>Evidence Vault</h3><p>Store what was built, what broke, how it was fixed, what was learned, and what can be shown to an employer.</p><span class="zone-chip">PROOF</span></article>
-      </div>
-    </section>
+      <section id="direction" class="section world-shell principles">
+        <div>
+          <p class="eyebrow">VISUAL DIRECTION</p>
+          <h2>Voxel nostalgia + cyber infrastructure.</h2>
+          <p class="section-copy">The Minecraft-like feeling comes from scale, construction, readable paths, block terrain, exploration, and guided discovery. The identity comes from Cyber Career OS: luminous data paths, infrastructure towers, terminals, status systems, lab architecture, and an original color/material language.</p>
+        </div>
+        <div class="terminal" aria-label="Prototype rules">
+          <pre>&gt; world.rules
 
-    <section id="loop" class="shell section-block split-section">
-      <div>
-        <p class="eyebrow">THE GAME LOOP</p>
-        <h2>Learn → Build → Investigate → Prove → Apply.</h2>
-        <p class="section-copy">The informal site should feel more like exploring a system than reading a résumé. Each page can behave like a zone with its own status, unlocks, logs, artifacts, and progression.</p>
-      </div>
-      <ol class="quest-list">
-        <li><span>01</span><div><b>Accept quest</b><small>Pick a skill, lab, or job target.</small></div></li>
-        <li><span>02</span><div><b>Build the environment</b><small>Launch infrastructure and practice safely.</small></div></li>
-        <li><span>03</span><div><b>Capture evidence</b><small>Logs, notes, screenshots, detections, fixes.</small></div></li>
-        <li><span>04</span><div><b>Ship the proof</b><small>Turn the work into portfolio and application evidence.</small></div></li>
-      </ol>
-    </section>
+[KEEP] block-built terrain
+[KEEP] landmark-driven learning
+[KEEP] secrets + exploration
+[KEEP] simple readable silhouettes
+[ADD ] cyber beacons + data paths
+[ADD ] live project/lab status later
+[ADD ] interactive project interiors later
 
-    <section id="systems" class="shell section-block">
-      <div class="section-heading"><p class="eyebrow">SYSTEM STATUS</p><h2>What powers the world.</h2></div>
-      <div class="systems-grid">
-        <div class="system"><span class="light live"></span><b>FastAPI Core</b><small>API + policy layer</small></div>
-        <div class="system"><span class="light live"></span><b>PostgreSQL</b><small>Career state + evidence</small></div>
-        <div class="system"><span class="light live"></span><b>Proxmox</b><small>Lab infrastructure</small></div>
-        <div class="system"><span class="light live"></span><b>Wazuh / SIEM</b><small>Telemetry + investigation</small></div>
-        <div class="system"><span class="light dev"></span><b>Agent Network</b><small>Specialist workflows</small></div>
-        <div class="system"><span class="light dev"></span><b>Local Models</b><small>Ollama-first direction</small></div>
-      </div>
-    </section>
+[NO  ] Minecraft textures
+[NO  ] Minecraft mobs/items/UI
+[NO  ] Mojang/Microsoft logos
+[NO  ] copied tutorial-world geometry</pre>
+        </div>
+      </section>
 
-    <section id="buildlog" class="shell section-block build-log">
-      <p class="eyebrow">BUILD LOG</p>
-      <div class="log-window">
-        <div class="log-bar"><span></span><span></span><span></span><b>world.log</b></div>
-        <pre><code>[world] original voxel-cyber visual system initialized
-[brand] Cyber Career OS identity loaded
-[assets] third-party game assets: none
-[deploy] target: self-hosted server container
-[next] interactive map, project zones, screenshots, live status widgets</code></pre>
-      </div>
-    </section>
+      <footer class="footer">
+        <div class="world-shell">
+          <span>CYBER CAREER OS // WORLD PROTOTYPE</span>
+          <span>Original visual system. Not affiliated with Mojang Studios or Microsoft.</span>
+        </div>
+      </footer>
+    </div>
   </main>
 
-  <footer>
-    <div class="shell footer-inner">
-      <span>CYBER CAREER OS // INFORMAL WORLD</span>
-      <span>Original design. No affiliation with Mojang Studios or Microsoft.</span>
-    </div>
-  </footer>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
