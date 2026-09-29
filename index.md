@@ -27,13 +27,13 @@ title: Hayden Ochoa | Cybersecurity Portfolio
   <div class="project-grid">
     <article class="project-card flagship">
       <div class="project-meta">
-        <span class="status">V0.5.0 • INFDEV COMPLETE</span>
+        <span class="status">V0.6.2 • ALPHA CLEANUP</span>
         <span class="tag">FLAGSHIP</span>
       </div>
       <h3>Cyber Career OS</h3>
-      <p>A local-first, AI-assisted cybersecurity career and training platform. V0.5.0 adds source-grounded natural-language and URL job intake, grounded SKILL/EVIDENCE/PROFILE proposals, application tracking, evidence-linked material context, improved assessments and provider status, and a more polished Windows launcher while preserving owner isolation, review-before-mutation, and deterministic career analysis.</p>
-      <div class="stack-list">FastAPI • PostgreSQL • SQLAlchemy • Alembic • Next.js • Ollama • Docker • PyInstaller • Security Architecture</div>
-      <a class="text-link" href="{{ '/projects/cyber-career-os/' | relative_url }}">View V0.5.0 implementation →</a>
+      <p>A local-first, AI-assisted cybersecurity career and training platform. The current alpha now combines source-grounded career intake, specialist agents, a secure Proxmox connection flow, mentor-guided labs, reviewed lab evidence, application tracking, and a progressively cleaner frontend while preserving owner isolation, explicit approvals, and review-before-mutation controls.</p>
+      <div class="stack-list">FastAPI • PostgreSQL • SQLAlchemy • Alembic • Next.js • Ollama • Proxmox • Docker • PyInstaller • Security Architecture</div>
+      <a class="text-link" href="{{ '/projects/cyber-career-os/' | relative_url }}">View current implementation →</a>
     </article>
 
     <article class="project-card">
@@ -63,9 +63,9 @@ title: Hayden Ochoa | Cybersecurity Portfolio
   <div class="section-kicker">DIRECTION</div>
   <h2>Current path</h2>
   <div class="timeline">
-    <div><strong>Now</strong><span>Build Cyber Career OS Alpha V0.6: controlled Proxmox lab discovery/provisioning, templates, mentor-guided training, quotas, approvals, and safe teardown.</span></div>
-    <div><strong>Next</strong><span>Layer in optional product improvements such as tray behavior and a real job-discovery adapter while using the platform for active cybersecurity job-search and training workflows.</span></div>
-    <div><strong>Long term</strong><span>Grow into incident response, detection engineering, and defensive security engineering.</span></div>
+    <div><strong>Now</strong><span>Finish Cyber Career OS V0.6.2 frontend cleanup: scalable navigation, consistent labels and controls, and practical management of jobs, skills, evidence, and applications.</span></div>
+    <div><strong>Next</strong><span>Build V0.7 around Wazuh-backed SOC practice, controlled lab templates and networking, lab-generated telemetry, investigation cases, and increasingly capable specialist agents.</span></div>
+    <div><strong>Long term</strong><span>Grow Cyber Career OS into a complete personal career-and-training platform, then expand it into adaptive cyber operations training beyond 1.0.</span></div>
   </div>
 </section>
 
