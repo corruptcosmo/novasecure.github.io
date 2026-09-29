@@ -27,13 +27,13 @@ title: Hayden Ochoa | Cybersecurity Portfolio
   <div class="project-grid">
     <article class="project-card flagship">
       <div class="project-meta">
-        <span class="status">V0.4.1 • HEROBRINE PATCH COMPLETE</span>
+        <span class="status">V0.5.0 • INFDEV COMPLETE</span>
         <span class="tag">FLAGSHIP</span>
       </div>
       <h3>Cyber Career OS</h3>
-      <p>A local-first, AI-assisted cybersecurity career and training platform. V0.4.1 adds the HEROBRINE owner/developer role and a Windows launcher that supervises PostgreSQL, migrations, FastAPI, Next.js, and Ollama health while preserving the security, ownership, audit, and human-review controls established in earlier releases.</p>
+      <p>A local-first, AI-assisted cybersecurity career and training platform. V0.5.0 adds source-grounded natural-language and URL job intake, grounded SKILL/EVIDENCE/PROFILE proposals, application tracking, evidence-linked material context, improved assessments and provider status, and a more polished Windows launcher while preserving owner isolation, review-before-mutation, and deterministic career analysis.</p>
       <div class="stack-list">FastAPI • PostgreSQL • SQLAlchemy • Alembic • Next.js • Ollama • Docker • PyInstaller • Security Architecture</div>
-      <a class="text-link" href="{{ '/projects/cyber-career-os/' | relative_url }}">View V0.4.1 implementation →</a>
+      <a class="text-link" href="{{ '/projects/cyber-career-os/' | relative_url }}">View V0.5.0 implementation →</a>
     </article>
 
     <article class="project-card">
@@ -63,8 +63,8 @@ title: Hayden Ochoa | Cybersecurity Portfolio
   <div class="section-kicker">DIRECTION</div>
   <h2>Current path</h2>
   <div class="timeline">
-    <div><strong>Now</strong><span>Build Cyber Career OS Infdev V0.5: smarter job intake, more natural AI-assisted proposals, career automation, and a cleaner launcher/developer experience.</span></div>
-    <div><strong>Next</strong><span>Use the platform to improve job discovery and application workflows while pursuing an entry-level SOC, security analyst, NOC, or infrastructure role.</span></div>
+    <div><strong>Now</strong><span>Build Cyber Career OS Alpha V0.6: controlled Proxmox lab discovery/provisioning, templates, mentor-guided training, quotas, approvals, and safe teardown.</span></div>
+    <div><strong>Next</strong><span>Layer in optional product improvements such as tray behavior and a real job-discovery adapter while using the platform for active cybersecurity job-search and training workflows.</span></div>
     <div><strong>Long term</strong><span>Grow into incident response, detection engineering, and defensive security engineering.</span></div>
   </div>
 </section>
