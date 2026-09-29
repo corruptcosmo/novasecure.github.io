@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: "Cyber Career OS // World" }}</title>
+  <meta name="description" content="{{ page.description | default: "An experimental voxel-cyber interface for exploring Cyber Career OS." }}">
+  <meta name="theme-color" content="#07110f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/world.css' | relative_url }}">
+</head>
+<body class="world-site">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="world-header">
+    <div class="world-shell nav-shell">
+      <a class="world-brand" href="{{ '/world/' | relative_url }}" aria-label="Cyber Career OS World home">
+        <span class="brand-cube" aria-hidden="true"></span>
+        <span>
+          <strong>CYBER CAREER OS</strong>
+          <small>WORLD // EXPERIMENTAL INTERFACE</small>
+        </span>
+      </a>
+
+      <nav class="world-nav" aria-label="World navigation">
+        <a href="#map">Map</a>
+        <a href="#loop">Loop</a>
+        <a href="#systems">Systems</a>
+        <a class="nav-exit" href="{{ '/' | relative_url }}">Portfolio ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    {{ content }}
+  </main>
+
+  <footer class="world-footer">
+    <div class="world-shell footer-shell">
+      <span>CYBER CAREER OS // ORIGINAL VOXEL-CYBER VISUAL SYSTEM</span>
+      <span>No third-party game assets used.</span>
+    </div>
+  </footer>
+</body>
+</html>
