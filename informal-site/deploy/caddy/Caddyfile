@@ -1,0 +1,4 @@
+# Replace this hostname before deployment.
+world.example.com {
+    reverse_proxy cyber-career-world:80
+}
