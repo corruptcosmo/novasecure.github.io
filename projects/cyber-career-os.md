@@ -6,8 +6,8 @@ permalink: /projects/cyber-career-os/
 
 # Cyber Career OS
 
-**Status:** `V0.4.1 • Herobrine Patch Complete`  
-**Current focus:** `Infdev V0.5 • Smarter Job Intake, Career Automation & Product UX`
+**Status:** `V0.5.0 • Infdev Complete`  
+**Current focus:** `Alpha V0.6 • Controlled Lab Provisioning & Mentor`
 
 **Cyber Career OS** is a local-first, AI-assisted cybersecurity career and training platform I am designing and building to close the gap between learning security skills and proving them in a way that supports real career opportunities.
 
@@ -18,34 +18,52 @@ It is being built as both a **real personal tool** and a **portfolio-grade engin
   <figcaption>The core loop: learn skills, prove them with evidence, apply them to career opportunities, and improve by turning gaps into new labs.</figcaption>
 </figure>
 
+## V0.5.0 — Infdev: Intelligent Job Intake, Career Automation & Product UX
+
+V0.5 moves Cyber Career OS beyond canned AI test inputs toward more realistic day-to-day career use.
+
+### Implemented
+
+- source-grounded normalized JOB, SKILL, EVIDENCE, and PROFILE proposals
+- verbatim source-span validation so normalized wording can differ from source text without weakening grounding
+- protected employment/certification claims remain blocked when unsupported
+- controlled public job-URL fetching with private-network/SSRF protections, bounded redirects, content limits, and script-free extraction
+- URL provenance and duplicate URL protection for accepted jobs
+- provider-neutral `JobDiscoveryProvider` contract and candidate deduplication foundation without pretending an external board is configured
+- Applications page with saved-job tracking, allowed stage transitions, readiness, and evidence-linked material context
+- read-only material-context service that exposes only eligible evidence/provenance for future resume/cover-letter proposals
+- assessment gap/training results shown directly in the frontend
+- improved Skills/Evidence loading, empty, and success states
+- provider/routing visibility in Settings and safe HEROBRINE developer diagnostics
+- cleaner launcher status/progress UX and hidden launcher-owned helper processes so normal use does not leave terminal windows open
+- Ollama launcher connection/model-installed checks and reset-to-saved settings
+- role-aware navigation cleanup, including hiding Login/Register flows from authenticated users
+- preserved review/acceptance before AI-assisted data can mutate career records
+
+### Release verification
+
+V0.5.0 passed:
+
+- backend tests — **105 passed**
+- Ruff lint/format — **passed**
+- frontend production build — **passed**
+- packaged `CyberCareerOS.exe` smoke/build checks — **passed**
+- updated launcher GUI and hidden-process behavior — **validated live**
+- updated Ollama proposal flow and newly added frontend workflows — **validated live**
+- Applications, assessments, provider status, and role-aware UX — **validated live**
+- public URL intake — **validated live**
+
+The external job-board adapter and optional tray behavior remain intentionally deferred rather than being shipped as incomplete features.
+
+---
+
 ## V0.4.1 — Herobrine Patch
 
 V0.4.1 focused on day-to-day owner/developer usability without weakening the security architecture.
 
-### Implemented
+Implemented the dedicated **HEROBRINE** developer role, centralized capabilities, read-only developer diagnostics, and the packaged Windows `CyberCareerOS.exe` launcher for PostgreSQL/migration/backend/frontend/Ollama supervision. Live Windows RC testing caught and fixed virtual-environment and PyInstaller module-packaging defects before release.
 
-- dedicated **HEROBRINE** project-owner/developer role
-- centralized capability checks rather than a global authorization bypass
-- HEROBRINE developer diagnostics while preserving ownership, approval, classification, provider-policy, and audit boundaries
-- Windows `CyberCareerOS.exe` launcher built with PyInstaller
-- launcher-managed PostgreSQL health, Alembic migrations, FastAPI backend, Next.js frontend, browser launch, logs, and optional Ollama status
-- start, stop, restart, and health workflows
-- launcher process ownership so unrelated Python/Node processes are not intentionally controlled
-- Ollama URL/model configuration in the launcher
-- fixes discovered during live Windows packaging, including virtual-environment resolution and bundled launcher-module imports
-
-### Release verification
-
-V0.4.1 passed:
-
-- backend tests — **62 passed**
-- Ruff lint and formatting — **passed**
-- frontend TypeScript checks — **passed**
-- frontend production build — **passed**
-- packaged Windows launcher — **validated live**
-- launcher Status and Ollama integration — **validated live**
-
-The patch was intentionally held at release-candidate status until the packaged executable worked on the actual Windows environment.
+Release verification included **62 backend tests**, Ruff, frontend TypeScript/build checks, and live launcher/Ollama validation.
 
 ---
 
@@ -56,8 +74,6 @@ V0.4 introduced the first live AI-assisted workflows while preserving the determ
 Implemented capabilities include real frontend auth, USER/ADMIN access control, operator visibility, a privacy-aware `ModelRouter`, configurable Ollama-first AI, optional cloud providers, strict typed structured outputs, human-reviewed AI proposals, source-support validation, provider diagnostics, benchmarking, and AI-assisted JOB/SKILL/EVIDENCE/PROFILE creation.
 
 Live testing exposed and fixed several integration defects that mocks did not catch: generic JSON rather than schema-bound output, excessive Qwen reasoning consuming output budgets, and generic proposal dictionaries hiding the real nested schema. The final live Ollama/Qwen workflow successfully created reviewed job and evidence records.
-
-V0.4.0 release verification included **53 backend tests**, Ruff, frontend TypeScript/build checks, live Ollama proposal generation, proposal persistence, outage behavior, ownership/privacy checks, and deterministic V0.3 regression validation.
 
 ---
 
@@ -85,35 +101,38 @@ Agents do not receive unrestricted database, shell, hypervisor, or SIEM access. 
 
 ---
 
-## Infdev V0.5 — Smarter Job Intake, Career Automation & Product UX
+## Alpha V0.6 — Controlled Lab Provisioning & Mentor
 
-V0.5 moves Cyber Career OS from a working developer-oriented system toward something that feels much more like a cohesive daily-use product.
+V0.6 shifts the next major milestone from career intake toward **safe, hands-on cybersecurity training infrastructure**.
 
 Planned focus:
 
-- smarter natural-language JOB/SKILL/EVIDENCE/PROFILE intake without depending on one canned prompt shape
-- replace brittle exact-substring job source checks with evidence/span-aware validation that remains strict about invented facts
-- URL-assisted job-post intake and a foundation for provider-backed job discovery/import
-- job deduplication and normalized source/provenance handling
-- stronger career-agent workflows and application tracking
-- truthful resume and cover-letter preparation based only on supported profile/evidence data
-- cleaner launcher UI and visual polish
-- hidden/background child-process execution so normal launcher use does not leave terminal windows open
-- improved logs/status/error presentation
-- a cleaner HEROBRINE developer experience, including improved API/Swagger usability where safe
-- preserve preview/review before meaningful AI-proposed mutations
+- read-only Proxmox discovery first: nodes, storage, templates, pools, VM/LXC metadata, and health
+- a tightly scoped `HypervisorProvider` implementation rather than direct model-to-Proxmox access
+- AI-LAB-only provisioning boundaries, quotas, approved templates, resource caps, and controlled naming/network placement
+- explicit approval for provisioning, destructive lifecycle changes, and teardown where appropriate
+- lab templates that map training goals to reproducible VM/LXC environments
+- mentor-guided training plans that connect V0.5 skill/evidence gaps to concrete labs
+- lab lifecycle state, progress, notes, completion, teardown, and audit history
+- safe evidence generation from completed lab work without misrepresenting it as employment
+- failure recovery and cleanup so interrupted provisioning does not silently leave unmanaged resources
+- preserve provider abstraction so Proxmox is the first implementation, not a hardcoded architectural dependency
 
-The goal is not to weaken source validation. V0.5 should make the validator understand *supported meaning and provenance* rather than requiring model output to copy source wording exactly.
+### Optional V0.6 add-ons
+
+If core V0.6 work is stable, two deferred V0.5 product features may be layered on top without displacing the lab milestone:
+
+- system-tray behavior for the Windows launcher
+- the first real external job-discovery adapter behind the existing `JobDiscoveryProvider`, with selected postings still routed through URL/source validation, proposal review, and acceptance
+
+These are secondary to safe lab provisioning and mentor workflows.
 
 ---
 
 ## Roadmap to 1.0
 
-### Infdev V0.5 — Career Automation & Job Intake
-Natural job intake, discovery/import foundations, deduplication, career materials, improved application workflows, and product/launcher polish.
-
 ### Alpha V0.6 — Controlled Lab Provisioning & Mentor
-Read-only Proxmox discovery followed by tightly scoped lab provisioning, templates, training plans, quotas, approvals, and teardown controls.
+Read-only Proxmox discovery followed by tightly scoped lab provisioning, templates, mentor-guided training, quotas, approvals, evidence generation, and teardown controls. Optional V0.5 add-ons may land only after the core lab path is stable.
 
 ### Alpha V0.7 — SIEM & SOC Practice
 Wazuh-first SIEM integration, telemetry, cases, ATT&CK mapping, analyst notes, timelines, and SOC-style workflows.
