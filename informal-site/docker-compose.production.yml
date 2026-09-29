@@ -1,0 +1,11 @@
+services:
+  informal-site:
+    build: .
+    container_name: cyber-career-world
+    restart: unless-stopped
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
