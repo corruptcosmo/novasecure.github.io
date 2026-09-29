@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07100f">
+  <meta name="description" content="Explore Cyber Career OS as an original interactive voxel-cyber training world.">
+  <title>Cyber Career OS // World</title>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#world" aria-label="Cyber Career OS World home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-copy">
+        <strong>CYBER CAREER OS</strong>
+        <small>WORLD // 3D PROTOTYPE</small>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#world">World</a>
+      <a href="#tutorial">Tutorial</a>
+      <a href="#direction">Direction</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="world" class="world-hero" aria-label="Interactive Cyber Career OS world">
+      <div id="world-canvas" aria-label="Interactive 3D voxel world"></div>
+
+      <div class="hero-copy">
+        <p class="eyebrow">SPAWN POINT // CAREER BUILD 01</p>
+        <h1>Learn the world.<br><span>Build your path.</span></h1>
+        <p class="lead">A block-built cyber training hub inspired by the feeling of classic tutorial worlds—not their assets. Explore the systems behind Cyber Career OS as landmarks in one connected world.</p>
+        <div class="hero-actions">
+          <button id="tutorial-button" class="btn primary" type="button">Start guided tour</button>
+          <button id="reset-view" class="btn" type="button">Return to spawn</button>
+        </div>
+      </div>
+
+      <aside class="world-hud" aria-label="World status">
+        <div class="hud-box"><small>World</small><strong>ONLINE</strong></div>
+        <div class="hud-box"><small>Render</small><strong>3D / WEBGL</strong></div>
+        <div class="hud-box"><small>Assets</small><strong>ORIGINAL</strong></div>
+      </aside>
+
+      <aside id="zone-panel" class="zone-panel" aria-live="polite">
+        <span id="zone-kicker" class="eyebrow">ZONE</span>
+        <h2 id="zone-title">Landmark</h2>
+        <p id="zone-copy">Select a landmark to inspect it.</p>
+        <span id="zone-meta" class="zone-meta">SYSTEM // READY</span>
+      </aside>
+
+      <div id="canvas-hint" class="canvas-hint">DRAG TO LOOK • SCROLL TO ZOOM • CLICK A LANDMARK</div>
+    </section>
+
+    <div class="content">
+      <section id="tutorial" class="section world-shell">
+        <p class="eyebrow">TUTORIAL WORLD LOGIC</p>
+        <h2>Spawn. Learn. Wander. Discover.</h2>
+        <p class="section-copy">The world begins at one readable central landmark, then lets you branch outward into increasingly specialized areas. Each zone will eventually contain its own interactive demonstrations, project evidence, terminals, hidden details, and links into deeper pages.</p>
+
+        <div class="tutorial-grid">
+          <article class="tutorial-card"><span>01 // SPAWN</span><h3>Orientation Plaza</h3><p>Learn what Cyber Career OS is, how the world is organized, and where each path leads.</p></article>
+          <article class="tutorial-card"><span>02 // BUILD</span><h3>Career Base</h3><p>Profile, skills, applications, job targets, approvals, and your working career state.</p></article>
+          <article class="tutorial-card"><span>03 // TRAIN</span><h3>Cyber Range</h3><p>Labs, SIEM telemetry, investigations, controlled attack practice, and mentor-guided progression.</p></article>
+          <article class="tutorial-card"><span>04 // PROVE</span><h3>Evidence Vault</h3><p>Turn the things you build and fix into reviewable proof instead of just claims on a résumé.</p></article>
+        </div>
+      </section>
+
+      <section id="direction" class="section world-shell principles">
+        <div>
+          <p class="eyebrow">VISUAL DIRECTION</p>
+          <h2>Voxel nostalgia + cyber infrastructure.</h2>
+          <p class="section-copy">The Minecraft-like feeling comes from scale, construction, readable paths, block terrain, exploration, and guided discovery. The identity comes from Cyber Career OS: luminous data paths, infrastructure towers, terminals, status systems, lab architecture, and an original color/material language.</p>
+        </div>
+        <div class="terminal" aria-label="Prototype rules">
+          <pre>&gt; world.rules
+
+[KEEP] block-built terrain
+[KEEP] landmark-driven learning
+[KEEP] secrets + exploration
+[KEEP] simple readable silhouettes
+[ADD ] cyber beacons + data paths
+[ADD ] live project/lab status later
+[ADD ] interactive project interiors later
+
+[NO  ] Minecraft textures
+[NO  ] Minecraft mobs/items/UI
+[NO  ] Mojang/Microsoft logos
+[NO  ] copied tutorial-world geometry</pre>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="world-shell">
+          <span>CYBER CAREER OS // WORLD PROTOTYPE</span>
+          <span>Original visual system. Not affiliated with Mojang Studios or Microsoft.</span>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

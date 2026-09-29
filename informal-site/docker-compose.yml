@@ -1,0 +1,7 @@
+services:
+  informal-site:
+    build: .
+    container_name: cyber-career-world
+    restart: unless-stopped
+    ports:
+      - "8088:80"
