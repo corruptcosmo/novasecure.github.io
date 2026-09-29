@@ -6,157 +6,289 @@ permalink: /projects/cyber-career-os/
 
 # Cyber Career OS
 
-**Status:** `V0.5.0 • Infdev Complete`  
-**Current focus:** `Alpha V0.6 • Controlled Lab Provisioning & Mentor`
+**Status:** `V0.6.2 Alpha • Frontend & Resource-Management Cleanup`  
+**Next major milestone:** `Alpha V0.7 • SIEM, SOC Practice & Smarter Labs`
 
-**Cyber Career OS** is a local-first, AI-assisted cybersecurity career and training platform I am designing and building to close the gap between learning security skills and proving them in a way that supports real career opportunities.
+**Cyber Career OS** is a local-first, AI-assisted cybersecurity career and training platform I am building to connect job-market requirements, verified skills, practical training, lab infrastructure, and evidence-backed career development.
 
-It is being built as both a **real personal tool** and a **portfolio-grade engineering project**.
+It is both a **real personal tool** and a **portfolio-grade engineering project**. The long-term goal is a closed loop where career gaps become targeted hands-on practice, that practice becomes reviewed evidence, and the evidence improves future career decisions.
 
-<figure class="project-graphic">
+<figure class="project-graphic motion-graphic">
   <img src="/novasecure.github.io/images/cyber-career-os-flow.svg" alt="Cyber Career OS workflow diagram" />
-  <figcaption>The core loop: learn skills, prove them with evidence, apply them to career opportunities, and improve by turning gaps into new labs.</figcaption>
+  <figcaption>The original core loop: learn, prove, apply, improve.</figcaption>
 </figure>
 
-## V0.5.0 — Infdev: Intelligent Job Intake, Career Automation & Product UX
+---
 
-V0.5 moves Cyber Career OS beyond canned AI test inputs toward more realistic day-to-day career use.
+## Current Alpha — V0.6.x
 
-### Implemented
+V0.6 moved Cyber Career OS beyond career tracking and into controlled hands-on training infrastructure.
 
-- source-grounded normalized JOB, SKILL, EVIDENCE, and PROFILE proposals
-- verbatim source-span validation so normalized wording can differ from source text without weakening grounding
-- protected employment/certification claims remain blocked when unsupported
-- controlled public job-URL fetching with private-network/SSRF protections, bounded redirects, content limits, and script-free extraction
-- URL provenance and duplicate URL protection for accepted jobs
-- provider-neutral `JobDiscoveryProvider` contract and candidate deduplication foundation without pretending an external board is configured
-- Applications page with saved-job tracking, allowed stage transitions, readiness, and evidence-linked material context
-- read-only material-context service that exposes only eligible evidence/provenance for future resume/cover-letter proposals
-- assessment gap/training results shown directly in the frontend
-- improved Skills/Evidence loading, empty, and success states
-- provider/routing visibility in Settings and safe HEROBRINE developer diagnostics
-- cleaner launcher status/progress UX and hidden launcher-owned helper processes so normal use does not leave terminal windows open
-- Ollama launcher connection/model-installed checks and reset-to-saved settings
-- role-aware navigation cleanup, including hiding Login/Register flows from authenticated users
-- preserved review/acceptance before AI-assisted data can mutate career records
+### V0.6.0-alpha.1 — Controlled Labs & Mentor
 
-### Release verification
+Implemented:
 
-V0.5.0 passed:
+- scoped, provider-neutral Proxmox integration behind `HypervisorProvider`
+- read-only discovery separated from mutation
+- Proxmox mutations disabled by default
+- dedicated node/pool/bridge/template allowlists and resource caps
+- approval-bound lab provisioning and teardown
+- lab definitions, runs, events, quotas, checkpoints, and deterministic mentor plans
+- four starter lab definitions
+- partial-failure handling that retains resource IDs for operator inspection
+- reviewable lab-evidence proposals
+- accepted completed-lab evidence classified as `LAB_VERIFIED`, never silently as employment
+- manual career-source import foundation with preview, review, provenance, and deduplication
+- LinkedIn connection intentionally disabled rather than claiming unsupported capabilities
 
-- backend tests — **105 passed**
-- Ruff lint/format — **passed**
-- frontend production build — **passed**
-- packaged `CyberCareerOS.exe` smoke/build checks — **passed**
-- updated launcher GUI and hidden-process behavior — **validated live**
-- updated Ollama proposal flow and newly added frontend workflows — **validated live**
-- Applications, assessments, provider status, and role-aware UX — **validated live**
-- public URL intake — **validated live**
+Automated verification for the initial alpha reached **120 backend tests**, Ruff, and a successful frontend production build. Live infrastructure validation remained a separate release gate rather than being inferred from mocks.
 
-The external job-board adapter and optional tray behavior remain intentionally deferred rather than being shipped as incomplete features.
+### V0.6.1-alpha.1 — Proxmox Onboarding & Specialist Agents
+
+The next patch fixed a practical problem found during real use: the Proxmox provider existed, but connecting a server was too manual.
+
+Implemented:
+
+- HEROBRINE-only Proxmox connection wizard
+- real connection testing before saving credentials
+- discovery of nodes, pools, bridges, storage, and templates
+- selectable infrastructure boundaries rather than hand-entered IDs
+- DPAPI-encrypted local storage for the Proxmox token secret on Windows
+- secrets never returned to the browser after storage
+- saving a provider keeps mutations disabled
+- controlled provisioning must be enabled separately and still requires approvals
+- three owner-scoped native specialist-agent paths
+- external job-candidate handoff that validates candidates but creates no jobs directly
+- selected external jobs still enter the existing source-fetch → proposal → review → acceptance pipeline
+
+Automated checks reached **131 backend tests**, Ruff, and a successful frontend production build.
+
+Live testing then confirmed the connection flow could authenticate to the real Proxmox server and discover infrastructure after assigning appropriately scoped read permissions. A dedicated lab pool and compatible templates can now be prepared as the next infrastructure layer.
+
+### V0.6.2 Alpha — Frontend Cleanup
+
+V0.6.2 is intentionally smaller. It focuses on making the expanding application easier to use before V0.7 adds another major subsystem.
+
+Current cleanup targets include:
+
+- navigation that scales without overflowing as new modules are added
+- consistent capitalization, labels, cards, status badges, forms, and actions
+- role-aware navigation for USER, ADMIN, and HEROBRINE
+- practical frontend edit/delete/archive controls for jobs, skills, evidence, applications, and other safe user-owned resources
+- confirmation and dependency handling for destructive actions
+- clearer loading, empty, success, and failure states
+- removal of stale, duplicate, or context-invalid controls
+- preserving all existing backend authorization rather than treating hidden buttons as security
+
+This is not intended to be the final V1 visual design. It is a usability cleanup so the project can keep growing without the interface becoming difficult to navigate.
 
 ---
 
-## V0.4.1 — Herobrine Patch
+## How the Pieces Now Connect
 
-V0.4.1 focused on day-to-day owner/developer usability without weakening the security architecture.
+<figure class="project-graphic motion-graphic">
+  <img src="/novasecure.github.io/images/cyber-career-os-agent-loop.svg" alt="Animated Cyber Career OS career, agent, policy, lab, and evidence loop" />
+  <figcaption>Current architecture direction: specialist agents coordinate narrow tasks, while policy, ownership, quotas, approvals, and review remain authoritative.</figcaption>
+</figure>
 
-Implemented the dedicated **HEROBRINE** developer role, centralized capabilities, read-only developer diagnostics, and the packaged Windows `CyberCareerOS.exe` launcher for PostgreSQL/migration/backend/frontend/Ollama supervision. Live Windows RC testing caught and fixed virtual-environment and PyInstaller module-packaging defects before release.
+The working direction is increasingly agent-oriented, but the agents do not become unrestricted administrators.
 
-Release verification included **62 backend tests**, Ruff, frontend TypeScript/build checks, and live launcher/Ollama validation.
+> User intent → specialist agent → controlled tool → authorization/policy → approval when required → controlled provider/service
 
----
-
-## V0.4.0 — Hybrid AI, Frontend Authentication & Assisted Data Entry
-
-V0.4 introduced the first live AI-assisted workflows while preserving the deterministic and security-focused architecture from earlier releases.
-
-Implemented capabilities include real frontend auth, USER/ADMIN access control, operator visibility, a privacy-aware `ModelRouter`, configurable Ollama-first AI, optional cloud providers, strict typed structured outputs, human-reviewed AI proposals, source-support validation, provider diagnostics, benchmarking, and AI-assisted JOB/SKILL/EVIDENCE/PROFILE creation.
-
-Live testing exposed and fixed several integration defects that mocks did not catch: generic JSON rather than schema-bound output, excessive Qwen reasoning consuming output budgets, and generic proposal dictionaries hiding the real nested schema. The final live Ollama/Qwen workflow successfully created reviewed job and evidence records.
+Career calculations that can remain deterministic stay deterministic. Models explain, coordinate, normalize, mentor, and propose; they do not become the source of truth simply because they generated an answer.
 
 ---
 
-## Earlier foundation
+## Earlier Releases
+
+### V0.5.0 — Infdev: Intelligent Job Intake & Career Automation
+
+V0.5 made AI-assisted intake usable beyond one canned test prompt.
+
+Major additions included:
+
+- source-grounded JOB, SKILL, EVIDENCE, and PROFILE proposals
+- verbatim source-span validation for normalized facts
+- public job-URL intake with SSRF/private-network protections
+- duplicate URL and provenance handling
+- provider-neutral `JobDiscoveryProvider` foundation
+- Applications page and valid stage tracking
+- readiness and evidence-linked material context
+- assessment results directly in the frontend
+- improved provider and launcher status
+- hidden launcher-owned helper processes
+- role-aware navigation cleanup
+
+V0.5.0 passed **105 backend tests**, Ruff, frontend production build, packaged launcher smoke checks, and live validation of the updated launcher, Ollama proposal flow, URL intake, applications, assessments, and provider status.
+
+### V0.4.1 — Herobrine Patch
+
+Introduced the dedicated **HEROBRINE** owner/developer role and the packaged Windows `CyberCareerOS.exe` runtime supervisor while preserving ownership, approval, classification, audit, and provider-policy boundaries.
+
+### V0.4.0 — Hybrid AI & Assisted Data Entry
+
+Introduced real frontend authentication, USER/ADMIN roles, configurable Ollama-first routing, structured model outputs, proposal preview/acceptance, provider diagnostics, and AI-assisted career-record creation.
+
+Live testing found important defects that mocked tests missed, including generic JSON instead of schema-bound output, excessive model reasoning consuming output budgets, and proposal schemas that did not expose their real nested contracts to the model.
 
 ### V0.3.0 — Career Workflow & Intelligence
 
-Added deterministic evidence-aware capability snapshots, normalized requirements, persisted fit assessments, skill/evidence gaps, application readiness, training recommendations, workflow history, and stale-result detection without requiring a model provider.
+Added deterministic capability snapshots, normalized requirements, persisted fit assessments, skill/evidence gaps, readiness, training recommendations, workflow history, and stale-result detection.
 
 ### V0.2.0 — Identity, Policy & Resource Management
 
-Added Argon2 authentication, revocable sessions, owner-scoped CRUD, application transitions, centralized risk handling, target/parameter-bound approvals, correlation-aware auditing, provider policy, and protected account deletion.
+Added Argon2 authentication, revocable sessions, owner-scoped CRUD, valid application transitions, target/parameter-bound approvals, auditing, provider policy, and protected account deletion.
 
 ### V0.1.0 — Foundation
 
-Established FastAPI, PostgreSQL, SQLAlchemy/Alembic, provider contracts, deterministic mock models, Next.js, Docker Compose, architecture documentation, ADRs, threat modeling, and the first owner-aware career-domain models.
+Established FastAPI, PostgreSQL, SQLAlchemy/Alembic, Next.js, provider abstractions, deterministic mock models, Docker development infrastructure, architecture documentation, ADRs, and threat modeling.
 
 ---
 
 ## Security Architecture
 
+Cyber Career OS intentionally separates AI reasoning from privileged infrastructure.
+
 > Agent → Tool Request → Authorization / Policy Layer → Controlled Service → External System
 
-Agents do not receive unrestricted database, shell, hypervisor, or SIEM access. Labs and simulations are not silently represented as professional employment. AI-generated information is reviewable and does not become verified experience merely because a model produced it.
+Models do not receive unrestricted database sessions, shell access, hypervisor credentials, SIEM credentials, or automatic authority to submit applications.
 
----
+Important project rules include:
 
-## Alpha V0.6 — Controlled Lab Provisioning & Mentor
-
-V0.6 shifts the next major milestone from career intake toward **safe, hands-on cybersecurity training infrastructure**.
-
-Planned focus:
-
-- read-only Proxmox discovery first: nodes, storage, templates, pools, VM/LXC metadata, and health
-- a tightly scoped `HypervisorProvider` implementation rather than direct model-to-Proxmox access
-- AI-LAB-only provisioning boundaries, quotas, approved templates, resource caps, and controlled naming/network placement
-- explicit approval for provisioning, destructive lifecycle changes, and teardown where appropriate
-- lab templates that map training goals to reproducible VM/LXC environments
-- mentor-guided training plans that connect V0.5 skill/evidence gaps to concrete labs
-- lab lifecycle state, progress, notes, completion, teardown, and audit history
-- safe evidence generation from completed lab work without misrepresenting it as employment
-- failure recovery and cleanup so interrupted provisioning does not silently leave unmanaged resources
-- preserve provider abstraction so Proxmox is the first implementation, not a hardcoded architectural dependency
-
-### Optional V0.6 add-ons
-
-If core V0.6 work is stable, two deferred V0.5 product features may be layered on top without displacing the lab milestone:
-
-- system-tray behavior for the Windows launcher
-- the first real external job-discovery adapter behind the existing `JobDiscoveryProvider`, with selected postings still routed through URL/source validation, proposal review, and acceptance
-
-These are secondary to safe lab provisioning and mentor workflows.
+- human review before meaningful AI-proposed mutations
+- owner isolation across private career and lab data
+- approval-bound infrastructure operations
+- evidence provenance rather than model-created “verification”
+- lab and simulation work never silently represented as employment
+- external pages and job descriptions treated as untrusted data
+- provider abstractions so Ollama, Proxmox, Wazuh, job sources, and future services are replaceable
 
 ---
 
 ## Roadmap to 1.0
 
-### Alpha V0.6 — Controlled Lab Provisioning & Mentor
-Read-only Proxmox discovery followed by tightly scoped lab provisioning, templates, mentor-guided training, quotas, approvals, evidence generation, and teardown controls. Optional V0.5 add-ons may land only after the core lab path is stable.
+### V0.6.2 — Frontend & Resource-Management Cleanup
 
-### Alpha V0.7 — SIEM & SOC Practice
-Wazuh-first SIEM integration, telemetry, cases, ATT&CK mapping, analyst notes, timelines, and SOC-style workflows.
+Clean up navigation, labels, frontend management actions, confirmation flows, and obvious UX inconsistencies before adding another major subsystem.
+
+### Alpha V0.7 — SIEM, SOC Practice & Smarter Labs
+
+V0.7 is planned as the point where the training, agent, Proxmox, and defensive-security sides begin operating together.
+
+Planned areas:
+
+- Wazuh-first `SIEMProvider`
+- safe read-only SIEM discovery before privileged actions
+- alert intake, severity, rule metadata, endpoint context, and ATT&CK mappings where available
+- investigation cases with notes, findings, timelines, artifacts, dispositions, and lifecycle
+- SOC Analyst specialist agent with narrow read/propose tools
+- mentor + SOC agent collaboration
+- lab-generated telemetry feeding investigations
+- basic rubric-driven investigation grading
+- reviewed evidence generated from completed SOC exercises
+- automatic lab lifetime handling and safer cleanup
+- Proxmox infrastructure setup improvements discovered during V0.6 live testing
+- creation/import/registration of approved lab templates
+- explicit network profiles such as `ISOLATED` and `CONTROLLED_INTERNET`
+- default labs to the isolated bridge
+- base lab image/template + approved tool bundles as the first step toward AI-assembled job-specific labs
+
+The Lab Agent may increasingly recommend or request infrastructure, but actual creation still flows through policy, limits, approval, and controlled provider actions.
 
 ### Beta V0.8 — Controlled Scenarios, Purple Team & Grading
-Isolated scenario execution/replay, Purple Team feedback, detection engineering exercises, scoring, and evidence generation.
+
+Planned focus:
+
+- isolated scenario templates and controlled event generation
+- replayable incidents
+- Purple Team feedback
+- detection-engineering exercises
+- attack/replay → telemetry → detection → tuning loops
+- richer rubrics and evidence
+- more composable lab scenarios without granting agents unrestricted shell or infrastructure control
 
 ### Beta V0.9 — Portfolio, Resume Eligibility & Release Hardening
-Verified project/lab results become portfolio and truthful resume evidence, alongside onboarding, backup/restore, deployment reliability, and security hardening.
+
+Planned focus:
+
+- turn verified project/lab/SOC results into portfolio-ready material
+- evidence-aware resume eligibility
+- stronger reviewed resume/cover-letter workflows
+- onboarding and deployment checks
+- backup/restore
+- migration and update safety
+- health monitoring and configuration validation
+- security/performance cleanup
+- release documentation
+- preparation for a self-hosted public site and cleaner deployment boundaries
 
 ### Release 1.0 — Personal Cyber Career OS
 
-> job discovery → fit analysis → verified profile → truthful application materials → gaps → training/lab → isolated range → telemetry/SOC investigation → grading → verified evidence → portfolio/resume → stronger applications
+V1.0 is intended to be the first complete personal product rather than another isolated feature milestone.
+
+The end-to-end loop should work coherently:
+
+> job discovery → fit analysis → verified profile → truthful application material → gaps → mentor/training → controlled lab → telemetry/SOC investigation → grading → reviewed evidence → portfolio/resume → stronger applications
+
+V1.0 is also the natural point for many final product-level decisions: onboarding, final navigation and visual polish, packaging, safe updates, backup/restore, self-hosting, and potentially moving the existing web frontend into a desktop shell while preserving the same FastAPI/Next.js architecture.
 
 ---
 
 ## Beyond 1.0
 
-- **V2 — Adaptive Cyber Training Platform:** deeper model routing, Purple Team workflows, attack reconstruction/replay, detection engineering, SOC shifts, threat hunting, incident command, and forensics.
-- **V3 — Public Open-Source Platform:** multi-user deployment, plugins/modules, community scenario packs, and reusable self-hosting.
-- **V4 — Cyber Career OS Distribution:** simplified Linux-based deployment/appliance with guided setup and integrated AI, cyber-range, and SIEM options.
+The original V2 plan was an **Adaptive Cyber Training Platform**, but several pieces once considered “V2 ideas” — specialist agents, Proxmox, mentor-driven training, SOC practice, and Purple Team foundations — are arriving earlier. The post-1.0 roadmap can therefore aim higher.
+
+<figure class="project-graphic motion-graphic">
+  <img src="/novasecure.github.io/images/cyber-career-os-v2-adaptive.svg" alt="Animated concept diagram for V2 adaptive cyber operations and training" />
+  <figcaption>V2 direction: move from manually selected exercises toward an adaptive simulated security-operations environment.</figcaption>
+</figure>
+
+### V2 — Adaptive Cyber Operations & Training Platform
+
+V2 would evolve Cyber Career OS from a personal career-and-lab platform into an adaptive simulated cybersecurity organization.
+
+Potential direction:
+
+- dynamic training based on job requirements, past performance, missed investigation steps, weak techniques, and demonstrated strengths
+- persistent simulated organizations instead of only disposable one-off exercises
+- realistic SOC shifts containing normal noise, false positives, routine alerts, and genuine incidents
+- specialist virtual coworkers such as SOC Lead, Tier 1/Tier 2 Analyst, Threat Hunter, Incident Commander, Detection Engineer, and Mentor
+- proactive threat-hunting exercises rather than only alert-driven response
+- deeper detection-engineering loops: replay activity, observe telemetry, write/tune detections, replay again, compare results
+- incident-command decisions involving containment, escalation, evidence preservation, and communication
+- DFIR-oriented exercises using logs, packet captures, filesystem artifacts, disk/memory artifacts, and timelines where appropriate
+- adaptive difficulty and mentor scaffolding based on measured performance
+- more dynamic lab composition from approved components
+- richer multi-agent coordination and model routing while retaining provider/runtime fallback rather than depending on one agent framework
+
+The V2 identity is less “more features” and more **an environment that learns what the user needs to practice next**.
+
+### V3 — Public Open-Source Platform
+
+V3 would shift from a personal system toward a reusable platform:
+
+- multi-user deployment
+- reusable permissions and organization boundaries
+- plugins/modules
+- community lab/scenario packs
+- external provider integrations
+- contributor/developer documentation
+- reusable self-hosting and deployment patterns
+- optional shared training environments
+
+### V4 — Cyber Career OS Distribution
+
+V4 remains the distribution/appliance vision:
+
+- simplified Linux-based deployment
+- guided installation and hardware-aware setup
+- integrated local/hybrid/cloud AI choices
+- Proxmox/cyber-range/SIEM integration options
+- preconfigured but replaceable service components
+- easier deployment for users who do not want to assemble the full stack manually
 
 ---
 
 ## Why this matters as a portfolio project
 
-Cyber Career OS is not only a concept. Its history is evidence: architecture decisions, migrations, threat modeling, live integration bugs, regression tests, packaging failures found before release, provider-boundary design, and incremental delivery from a secure foundation toward a practical cybersecurity career platform.
+Cyber Career OS is not only a concept. Its development history is evidence of practical engineering work: architecture decisions, migrations, authorization design, threat modeling, live integration bugs, regression testing, Windows packaging, local-model integration, provider boundaries, Proxmox connectivity, approval-controlled infrastructure, and incremental delivery toward a coherent cybersecurity career-and-training platform.
