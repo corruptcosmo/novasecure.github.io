@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Cyber Career OS agent and lab loop</title>
+  <desc id="desc">Animated diagram showing career demand flowing through specialist agents into training, labs, evidence, and stronger applications.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a1421"/><stop offset="1" stop-color="#0d1927"/></linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#65d1ff"/><stop offset="1" stop-color="#8bf0c8"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".32"/></filter>
+    <filter id="pulse"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="520" rx="24" fill="url(#bg)"/>
+  <rect x="28" y="28" width="1144" height="464" rx="22" fill="none" stroke="#223348"/>
+  <text x="62" y="78" fill="#eef4f8" font-size="28" font-family="Inter,Segoe UI,Arial,sans-serif" font-weight="700">From career gap to verified evidence</text>
+  <text x="62" y="108" fill="#98a8b8" font-size="16" font-family="Inter,Segoe UI,Arial,sans-serif">Specialist agents coordinate work, but policy and approvals stay in the middle.</text>
+
+  <path id="route" d="M135 260 H1040" stroke="#25415a" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M135 260 H1040" stroke="url(#glow)" stroke-width="3" stroke-linecap="round" fill="none" stroke-dasharray="10 12" opacity=".85">
+    <animate attributeName="stroke-dashoffset" values="0;-44" dur="3s" repeatCount="indefinite"/>
+  </path>
+
+  <g filter="url(#shadow)">
+    <g transform="translate(70 180)"><rect width="190" height="160" rx="18" fill="#101d2b" stroke="#31526e"/><text x="24" y="38" fill="#8bf0c8" font-size="13" font-family="monospace" font-weight="700">CAREER</text><text x="24" y="73" fill="#eef4f8" font-size="22" font-family="Inter,Segoe UI,Arial,sans-serif" font-weight="700">Demand</text><text x="24" y="104" fill="#98a8b8" font-size="15" font-family="Inter,Segoe UI,Arial,sans-serif">Jobs • requirements</text><text x="24" y="129" fill="#98a8b8" font-size="15" font-family="Inter,Segoe UI,Arial,sans-serif">fit • evidence gaps</text></g>
+    <g transform="translate(315 180)"><rect width="190" height="160" rx="18" fill="#101d2b" stroke="#31526e"/><text x="24" y="38" fill="#65d1ff" font-size="13" font-family="monospace" font-weight="700">AGENTS</text><text x="24" y="73" fill="#eef4f8" font-size="22" font-family="Inter,Segoe UI,Arial,sans-serif" font-weight="700">Coordinate</text><text x="24" y="104" fill="#98a8b8" font-size="15" font-family="Inter,Segoe UI,Arial,sans-serif">Scout • analyst</text><text x="24" y="129" fill="#98a8b8" font-size="15" font-family="Inter,Segoe UI,Arial,sans-serif">mentor • lab</text></g>
+    <g transform="translate(560 180)"><rect width="190" height="160" rx="18" fill="#101d2b" stroke="#31526e"/><text x="24" y="38" fill="#ffd166" font-size="13" font-family="monospace" font-weight="700">CONTROL</text><text x="24" y="73" fill="#eef4f8" font-size="22" font-family="Inter,Segoe UI,Arial,sans-serif" font-weight="700">Policy Gate</text><text x="24" y="104" fill="#98a8b8" font-size="15" font-family="Inter,Segoe UI,Arial,sans-serif">owner scope • quotas</text><text x="24" y="129" fill="#98a8b8" font-size="15" font-family="Inter,Segoe UI,Arial,sans-serif">approval • audit</text></g>
+    <g transform="translate(805 180)"><rect width="190" height="160" rx="18" fill="#101d2b" stroke="#31526e"/><text x="24" y="38" fill="#8bf0c8" font-size="13" font-family="monospace" font-weight="700">TRAIN</text><text x="24" y="73" fill="#eef4f8" font-size="22" font-family="Inter,Segoe UI,Arial,sans-serif" font-weight="700">Lab + Mentor</text><text x="24" y="104" fill="#98a8b8" font-size="15" font-family="Inter,Segoe UI,Arial,sans-serif">Proxmox • checkpoints</text><text x="24" y="129" fill="#98a8b8" font-size="15" font-family="Inter,Segoe UI,Arial,sans-serif">tools • findings</text></g>
+    <g transform="translate(1015 180)"><rect width="120" height="160" rx="18" fill="#101d2b" stroke="#31526e"/><text x="16" y="38" fill="#65d1ff" font-size="13" font-family="monospace" font-weight="700">PROVE</text><text x="16" y="73" fill="#eef4f8" font-size="20" font-family="Inter,Segoe UI,Arial,sans-serif" font-weight="700">Evidence</text><text x="16" y="104" fill="#98a8b8" font-size="14" font-family="Inter,Segoe UI,Arial,sans-serif">reviewed</text><text x="16" y="126" fill="#98a8b8" font-size="14" font-family="Inter,Segoe UI,Arial,sans-serif">verified</text></g>
+  </g>
+
+  <circle r="8" fill="#8bf0c8" filter="url(#pulse)"><animateMotion dur="5s" repeatCount="indefinite" path="M135 260 H1040"/></circle>
+  <circle r="5" fill="#65d1ff" opacity=".9"><animateMotion begin="-2.4s" dur="5s" repeatCount="indefinite" path="M135 260 H1040"/></circle>
+
+  <path d="M1070 360 C1070 430 170 440 150 350" fill="none" stroke="#35536d" stroke-width="3" stroke-dasharray="8 10"/>
+  <text x="440" y="458" fill="#7890a4" font-size="15" font-family="Inter,Segoe UI,Arial,sans-serif">Verified evidence feeds the next career decision — the loop keeps improving.</text>
+</svg>
