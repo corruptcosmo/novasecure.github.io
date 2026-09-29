@@ -1,6 +1,161 @@
 # Cyber Career OS // World — Server Deployment
 
-This guide assumes a Linux server with Docker Engine, Docker Compose v2, Git, and SSH access.
+This guide assumes a Linux server with Docker Engine, Docker Compose v2, Git, and SSH access. For the current homelab deployment, the recommended layout is a dedicated Debian VM on Proxmox rather than installing the public web stack directly on the Proxmox host.
+
+# Stage 0 — Create the Proxmox web VM
+
+Recommended starter VM:
+
+- OS: Debian 13 stable (Trixie), amd64 netinst
+- Name: `cyber-web`
+- CPU: 2 cores, CPU type `host` when live migration compatibility is not needed
+- Memory: 2048 MB
+- Disk: 24 GB on SSD-backed storage if available
+- Network: VirtIO NIC attached to the normal LAN bridge (commonly `vmbr0`)
+- QEMU Guest Agent: enabled after the agent is installed in Debian
+- Start at boot: enabled after setup is verified
+
+## Upload the Debian ISO
+
+Download the current Debian 13 amd64 netinst ISO from Debian's official download page. In the Proxmox web UI, select the node, select storage that supports ISO images (commonly `local`), open **ISO Images**, then upload the ISO.
+
+## Create the VM in the Proxmox GUI
+
+Click **Create VM** and use these settings as a baseline:
+
+### General
+
+- Node: the Proxmox host
+- VM ID: leave the suggested unused ID
+- Name: `cyber-web`
+- Start at boot: can be enabled now or after installation
+
+### OS
+
+- Use CD/DVD disc image file (ISO)
+- Select the Debian 13 amd64 netinst ISO
+- Guest OS type: Linux
+
+### System
+
+- Keep the normal Proxmox defaults unless the host has a reason to use something else
+- SCSI Controller: VirtIO SCSI Single
+- QEMU Guest Agent: enable this option if available; install the guest package inside Debian after first boot
+
+### Disks
+
+- Bus/Device: SCSI
+- Storage: preferred VM disk storage
+- Disk size: 24 GiB
+- Discard: enable when the underlying storage supports it
+- SSD emulation: enable when the backing storage is SSD
+
+### CPU
+
+- Sockets: 1
+- Cores: 2
+- Type: `host` for a single-host homelab where maximum CPU compatibility across different Proxmox hosts is not needed
+
+### Memory
+
+- Memory: 2048 MiB
+
+### Network
+
+- Bridge: the normal LAN-facing Proxmox bridge, commonly `vmbr0`
+- Model: VirtIO (paravirtualized)
+
+Finish the wizard and start the VM.
+
+## Install Debian
+
+Open the VM's Console and boot the installer. A simple server install is enough:
+
+1. Choose **Graphical install** or **Install**.
+2. Select language, location, and keyboard.
+3. Hostname: `cyber-web`.
+4. Domain name: leave blank unless the LAN already uses one.
+5. Create a normal administrative user and password.
+6. Let DHCP configure networking for the first installation.
+7. Partitioning: **Guided - use entire disk**, then **All files in one partition**.
+8. Confirm the partition changes.
+9. Select a nearby Debian mirror.
+10. At software selection, deselect desktop environments. Keep **SSH server** and **standard system utilities** selected.
+11. Install GRUB to the VM disk when prompted.
+12. Reboot and remove/eject the installer ISO if Proxmox does not do so automatically.
+
+## First boot setup
+
+Log in through the Proxmox console, find the VM address, and update the system:
+
+```bash
+ip -br address
+sudo apt update
+sudo apt full-upgrade -y
+sudo apt install -y qemu-guest-agent ca-certificates curl git openssh-server
+sudo systemctl enable --now qemu-guest-agent ssh
+```
+
+In Proxmox, confirm **Options > QEMU Guest Agent** is enabled. Reboot the VM once if the Proxmox summary does not immediately show the guest IP address:
+
+```bash
+sudo reboot
+```
+
+Then SSH to it from another computer:
+
+```bash
+ssh YOUR_USER@VM_LAN_IP
+```
+
+A DHCP reservation in the home router is recommended so this VM keeps the same LAN IP. A static address can also be configured inside Debian, but a router reservation is usually simpler for a homelab.
+
+## Install Docker Engine and Compose from Docker's official repository
+
+Run these inside the `cyber-web` VM, not on the Proxmox host:
+
+```bash
+sudo apt update
+sudo apt install -y ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+sudo tee /etc/apt/sources.list.d/docker.sources >/dev/null <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/debian
+Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+Verify:
+
+```bash
+sudo docker run hello-world
+docker compose version
+```
+
+Optional: allow the normal user to run Docker without `sudo`:
+
+```bash
+sudo usermod -aG docker "$USER"
+```
+
+Log out and back in before testing the group change:
+
+```bash
+docker run hello-world
+```
+
+> Membership in the `docker` group effectively grants root-level control over this VM. Only grant it to trusted administrative users.
+
+---
 
 ## What a reverse proxy does
 
@@ -276,12 +431,14 @@ docker compose exec -w /etc/caddy caddy caddy reload
 
 # Recommended deployment order
 
-1. Clone the repository.
-2. Test `SERVER_LAN_IP:8088` on the LAN.
-3. Create the shared `web` Docker network.
-4. Switch the site to `docker-compose.production.yml`.
-5. Start Caddy with a temporary/local configuration or the real domain.
-6. Configure DNS.
-7. Configure only the required router/firewall ports.
-8. Verify HTTPS from a device outside the home network.
-9. Only after that, add the link from the formal portfolio.
+1. Create and update the dedicated Debian Proxmox VM.
+2. Install Docker Engine + Compose inside that VM.
+3. Clone the repository.
+4. Test `SERVER_LAN_IP:8088` on the LAN.
+5. Create the shared `web` Docker network.
+6. Switch the site to `docker-compose.production.yml`.
+7. Start Caddy with a temporary/local configuration or the real domain.
+8. Configure DNS.
+9. Configure only the required router/firewall ports.
+10. Verify HTTPS from a device outside the home network.
+11. Only after that, add the link from the formal portfolio.
