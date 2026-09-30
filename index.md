@@ -27,12 +27,12 @@ title: Hayden Ochoa | Cybersecurity Portfolio
   <div class="project-grid">
     <article class="project-card flagship">
       <div class="project-meta">
-        <span class="status">V0.6.2 • ALPHA CLEANUP</span>
+        <span class="status">V0.7 • ALPHA COMPLETE</span>
         <span class="tag">FLAGSHIP</span>
       </div>
       <h3>Cyber Career OS</h3>
-      <p>A local-first, AI-assisted cybersecurity career and training platform. The current alpha now combines source-grounded career intake, specialist agents, a secure Proxmox connection flow, mentor-guided labs, reviewed lab evidence, application tracking, and a progressively cleaner frontend while preserving owner isolation, explicit approvals, and review-before-mutation controls.</p>
-      <div class="stack-list">FastAPI • PostgreSQL • SQLAlchemy • Alembic • Next.js • Ollama • Proxmox • Docker • PyInstaller • Security Architecture</div>
+      <p>A local-first, AI-assisted cybersecurity career and training platform. V0.7 connects Wazuh-backed SOC practice with owner-scoped cases, reviewed lab evidence, controlled Proxmox template/network setup, specialist agents, and safer lab lifecycle controls while preserving explicit approval and provider boundaries.</p>
+      <div class="stack-list">FastAPI • PostgreSQL • SQLAlchemy • Alembic • Next.js • Ollama • Proxmox • Wazuh • Docker • PyInstaller</div>
       <a class="text-link" href="{{ '/projects/cyber-career-os/' | relative_url }}">View current implementation →</a>
     </article>
 
@@ -74,9 +74,9 @@ title: Hayden Ochoa | Cybersecurity Portfolio
   <div class="section-kicker">DIRECTION</div>
   <h2>Current path</h2>
   <div class="timeline">
-    <div><strong>Now</strong><span>Finish Cyber Career OS V0.6.2 frontend cleanup: scalable navigation, consistent labels and controls, and practical management of jobs, skills, evidence, and applications.</span></div>
-    <div><strong>Next</strong><span>Build V0.7 around Wazuh-backed SOC practice, controlled lab templates and networking, lab-generated telemetry, investigation cases, and increasingly capable specialist agents.</span></div>
-    <div><strong>Long term</strong><span>Grow Cyber Career OS into a complete personal career-and-training platform, then expand it into adaptive cyber operations training beyond 1.0.</span></div>
+    <div><strong>Now</strong><span>V0.7 is complete: Wazuh-backed SOC practice, controlled lab infrastructure, owner-scoped cases, specialist-agent guidance, reviewed LAB_VERIFIED evidence, and safer lab lifecycle handling are now in place.</span></div>
+    <div><strong>Next</strong><span>V0.8 moves into controlled scenarios, replayable incidents, Purple Team feedback, detection-engineering exercises, and richer rubric-driven grading without granting agents unrestricted shell or infrastructure access.</span></div>
+    <div><strong>Long term</strong><span>Complete the personal Cyber Career OS loop at V1.0, then expand into adaptive cyber operations training beyond 1.0.</span></div>
   </div>
 </section>
 
