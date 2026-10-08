@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import './style.css';
+import { addWorldPolish } from './world-polish.js';
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isMobile = window.matchMedia('(max-width: 760px)').matches;
@@ -98,11 +99,15 @@ function cube(parent, x, y, z, sx = 1, sy = 1, sz = 1, material = mat.stone, cas
 function terrainHeight(x, z) {
   const r = Math.hypot(x, z);
   if (r > 25) return 0;
-  if (Math.abs(x) < 2 && z < -5 && z > -10) return 1;
-  if (r < 15) return 2;
+  // Carve an actual water channel beneath the bridge instead of covering solid terrain.
+  if (Math.abs(x) < 2 && z < -5 && z > -10) return 0;
+  // All paths, buildings, and plaza props use Y=0 as their ground plane.
+  // Keep both the spawn and landmark footprints level; hills begin outside them.
+  const landmark = [[-15, 0], [15, 0], [0, -15], [0, 15]];
+  if (r < 15 || landmark.some(([lx, lz]) => Math.abs(x - lx) <= 5 && Math.abs(z - lz) <= 5)) return 1;
   const ridge = Math.sin(x * 0.36) * 0.9 + Math.cos(z * 0.31) * 0.8 + Math.sin((x + z) * 0.18) * 0.65;
   const rise = Math.max(0, (r - 13) * 0.2);
-  return THREE.MathUtils.clamp(Math.round(2 + ridge + rise), 1, 7);
+  return THREE.MathUtils.clamp(Math.round(1 + ridge + rise), 1, 7);
 }
 
 const terrainRadius = isMobile ? 22 : 27;
@@ -143,9 +148,9 @@ ocean.rotation.x = -Math.PI / 2;
 ocean.position.y = -1.03;
 world.add(ocean);
 
-const river = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 16), mat.water);
+const river = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 5.2), mat.water);
 river.rotation.x = -Math.PI / 2;
-river.position.set(0, 0.02, -7.5);
+river.position.set(0, -0.12, -7.5);
 world.add(river);
 
 function addPath(x1, z1, x2, z2) {
@@ -330,6 +335,9 @@ createForge(zones[1]);
 createRange(zones[2]);
 createVault(zones[3]);
 
+// Add original detail without complicating the main navigation/zone functions.
+addWorldPolish({ world, mat, isMobile, terrainHeight });
+
 // Side landmarks make the world feel explorable rather than like a four-button menu.
 function createRelayTower(x, z, accent = mat.amber) {
   const g = new THREE.Group();
@@ -428,6 +436,12 @@ tutorialButton.addEventListener('click', () => {
   nextTourStop();
 });
 resetButton.addEventListener('click', resetWorld);
+for (const button of document.querySelectorAll('[data-zone-id]')) {
+  button.addEventListener('click', () => {
+    const zone = zones.find((item) => item.id === button.dataset.zoneId);
+    if (zone) focusZone(zone);
+  });
+}
 
 function updatePointer(event) {
   const rect = renderer.domElement.getBoundingClientRect();
@@ -442,14 +456,29 @@ renderer.domElement.addEventListener('pointermove', (event) => {
   renderer.domElement.style.cursor = hit ? 'pointer' : 'grab';
 });
 
+let pointerStart = null;
+let pointerDragged = false;
+renderer.domElement.addEventListener('pointerdown', (event) => {
+  pointerStart = { x: event.clientX, y: event.clientY };
+  pointerDragged = false;
+});
+renderer.domElement.addEventListener('pointermove', (event) => {
+  if (pointerStart && Math.hypot(event.clientX - pointerStart.x, event.clientY - pointerStart.y) > 7) pointerDragged = true;
+});
+renderer.domElement.addEventListener('pointerup', () => { pointerStart = null; });
 renderer.domElement.addEventListener('click', (event) => {
+  if (pointerDragged) { pointerDragged = false; return; }
   updatePointer(event);
   raycaster.setFromCamera(pointer, camera);
   const hit = raycaster.intersectObjects(hitTargets, false)[0];
   if (hit?.object.userData.zone) focusZone(hit.object.userData.zone);
 });
 
-controls.addEventListener('start', () => canvasHint.classList.add('hidden'));
+controls.addEventListener('start', () => {
+  canvasHint.classList.add('hidden');
+  // Manual movement must interrupt automatic camera flights.
+  cameraTween = null;
+});
 
 const clock = new THREE.Clock();
 function animate() {
@@ -474,7 +503,10 @@ function animate() {
 
     for (const obj of animated) {
       if (obj.userData.spin) obj.rotation.y += obj.userData.spin * 0.01;
-      if (obj.userData.pulse) obj.scale.y = 1 + Math.sin(elapsed * 2.1 + obj.position.x) * 0.035;
+      if (obj.userData.pulse) {
+        obj.userData.baseScaleY ??= obj.scale.y;
+        obj.scale.y = obj.userData.baseScaleY * (1 + Math.sin(elapsed * 2.1 + obj.position.x) * 0.035);
+      }
       if (obj.userData.orbitPhase !== undefined) {
         obj.position.y += Math.sin(elapsed * 1.7 + obj.userData.orbitPhase) * 0.0015;
         obj.rotation.y += 0.012;
