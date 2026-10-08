@@ -196,7 +196,7 @@ function addSign(x, z, accent, rotation = 0) {
 
 function addTree(x, z, scale = 1) {
   const tree = new THREE.Group();
-  tree.position.set(x, 0, z);
+  tree.position.set(x, Math.max(0, terrainHeight(x, z) - 1), z);
   cube(tree, 0, 0.9 * scale, 0, 0.55 * scale, 1.8 * scale, 0.55 * scale, mat.wood);
   cube(tree, 0, 2.05 * scale, 0, 1.8 * scale, 1.2 * scale, 1.8 * scale, mat.leaf, false);
   cube(tree, 0, 2.95 * scale, 0, 1.1 * scale, 0.9 * scale, 1.1 * scale, mat.leaf, false);
@@ -341,7 +341,7 @@ addWorldPolish({ world, mat, isMobile, terrainHeight });
 // Side landmarks make the world feel explorable rather than like a four-button menu.
 function createRelayTower(x, z, accent = mat.amber) {
   const g = new THREE.Group();
-  g.position.set(x, 0, z);
+  g.position.set(x, Math.max(0, terrainHeight(x, z) - 1), z);
   cube(g, 0, 1, 0, 2.4, 2, 2.4, mat.stone);
   cube(g, 0, 3.1, 0, 1.35, 2.5, 1.35, mat.dark);
   const mast = cube(g, 0, 5.3, 0, 0.25, 2.4, 0.25, accent, false);
@@ -352,7 +352,7 @@ createRelayTower(-19, -15);
 createRelayTower(18, 14, mat.cyan);
 
 const secret = new THREE.Group();
-secret.position.set(19, 0, -19);
+secret.position.set(18, Math.max(0, terrainHeight(18, -17) - 1), -17);
 cube(secret, 0, 0.55, 0, 4.2, 1.1, 4.2, mat.dark);
 cube(secret, 0, 1.8, 0, 2.1, 1.9, 2.1, mat.stone2);
 const secretCore = new THREE.Mesh(new THREE.DodecahedronGeometry(0.75, 0), new THREE.MeshStandardMaterial({ color: 0xffca67, emissive: 0xd17a13, emissiveIntensity: 2.2 }));
