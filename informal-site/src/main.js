@@ -439,7 +439,10 @@ resetButton.addEventListener('click', resetWorld);
 for (const button of document.querySelectorAll('[data-zone-id]')) {
   button.addEventListener('click', () => {
     const zone = zones.find((item) => item.id === button.dataset.zoneId);
-    if (zone) focusZone(zone);
+    if (zone) {
+      focusZone(zone);
+      document.querySelector('#world').scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
+    }
   });
 }
 
@@ -515,9 +518,8 @@ function animate() {
   }
 
   renderer.render(scene, camera);
-  requestAnimationFrame(animate);
 }
-animate();
+renderer.setAnimationLoop(animate);
 
 function resize() {
   const width = mount.clientWidth;
