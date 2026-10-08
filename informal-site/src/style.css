@@ -201,6 +201,15 @@ a { color: inherit; text-decoration: none; }
 .section { padding: 88px 0; border-bottom: 1px solid var(--line); }
 .section h2 { margin: 8px 0 16px; max-width: 800px; font-family: 'Pixelify Sans', monospace; font-size: clamp(2.1rem, 4.5vw, 4.6rem); line-height: .96; font-weight: 600; }
 .section-copy { color: #aebfba; max-width: 780px; }
+.quick-travel { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0; }
+.quick-travel button {
+  cursor: pointer; padding: 11px 15px; border: 1px solid rgba(105,255,208,.3);
+  background: #0d2824; color: #d9fff2; font-family: 'Pixelify Sans', monospace;
+  font-size: .9rem; letter-spacing: .04em;
+}
+.quick-travel button:hover, .quick-travel button:focus-visible {
+  background: #164339; border-color: var(--green); outline-offset: 3px;
+}
 .tutorial-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; margin-top: 34px; }
 .tutorial-card {
   min-height: 230px;
